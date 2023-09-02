@@ -43,6 +43,7 @@
     width: 45%;
     border: 5px solid black;
     text-decoration: none;
+    background-color: white;
     color: black;
 }
 .navbar-logo-container p {

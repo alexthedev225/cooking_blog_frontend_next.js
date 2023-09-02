@@ -16,6 +16,7 @@
     width: 40%;
 }
 .post-container {
+    background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

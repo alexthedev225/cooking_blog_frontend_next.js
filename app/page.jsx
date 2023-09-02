@@ -1,6 +1,5 @@
-import Image from 'next/image'
-import styles from './page.module.css'
 import GetAllPostHome from '@/components/Home'
+import NavigateToAllPostsButton from '@/components/NavigateToAllPostsButton'
 import Link from 'next/link'
 
 export default function Home() {
@@ -13,22 +12,7 @@ export default function Home() {
     }}
   >
     <GetAllPostHome />
-    <Link href={"/blog"}>
-      <button
-        style={{
-          height: "3rem",
-          width: "15rem",
-          backgroundColor: "hotpink",
-          color: "white",
-          border: "none",
-          fontSize: "16px",
-          marginBottom: "3rem",
-          cursor: "pointer",
-        }}
-      >
-        Tous les posts
-      </button>
-    </Link>
+    <NavigateToAllPostsButton />
   </div>
   )
 }

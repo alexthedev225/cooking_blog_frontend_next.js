@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
-import { usePathname } from 'next/navigation'
+import { usePathname } from "next/navigation";
 import { useCookies } from "react-cookie";
 import styles from "@/styles/Form.module.css";
 import axios from "axios";
@@ -10,6 +10,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import NavigateToHomeButton from "@/components/NavigateToHomeButton";
 
 const lora = Lora({
   weight: "700",
@@ -18,7 +19,7 @@ const lora = Lora({
 
 const SignInForm = () => {
   const router = useRouter();
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   console.log(pathname); // Affiche le chemin de l'itinéraire actuel dans la console
 
@@ -121,6 +122,7 @@ const SignInForm = () => {
           </Formik>
         </div>
       </div>
+      <NavigateToHomeButton />
     </div>
   );
 };

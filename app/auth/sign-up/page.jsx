@@ -8,6 +8,7 @@ import styles from "@/styles/Form.module.css";
 import { Lora } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
+import NavigateToHomeButton from "@/components/NavigateToHomeButton";
 
 const lora = Lora({
   weight: "700",
@@ -214,6 +215,7 @@ const SignUpForm = () => {
           </Link>
         </div>
       </div>
+      <NavigateToHomeButton />
     </div>
   );
 };
