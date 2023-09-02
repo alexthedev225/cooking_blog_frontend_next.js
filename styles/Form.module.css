@@ -1,0 +1,191 @@
+.box-container-primary {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box-container-secondary {
+    display: flex;
+    background-color: white;
+    height: 80vh;
+    width: 55vw;
+    border-radius: 1rem;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.box-container-secondary>* {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 50%;
+}
+
+.register-container {
+    /* display: flex; */
+
+}
+
+.register-container form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 75%;
+    width: 70%;
+}
+
+.register-input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 70%;
+}
+
+.register-container form>button,
+.login-container form>button
+ {
+    border: none;
+    background-color: rgba(240, 46, 170, 0.7);
+    height: 3rem;
+    width: 8rem;
+    border-radius: 0.5rem;
+    color: white;
+}
+.register-container form>button:hover,
+.login-container form>button:hover
+ {
+  cursor: pointer;
+}
+
+.register-container form>h1,
+.login-container form>h1 {
+
+    /* height: 60%; */
+    letter-spacing: 3px;
+    font-weight: 700;
+}
+
+.register-input-container>div,
+.login-input-container>div
+ {
+    display: flex;
+}
+
+.register-input-container>div>input[type="text"],
+.register-input-container>div>input[type="password"],
+.register-input-container>div>input[type="email"],
+.login-input-container>div>input[type="text"],
+.login-input-container>div>input[type="password"],
+.login-input-container>div>input[type="email"]
+{
+    padding-left: 1rem;
+    border: none;
+    width: 100%;
+    /* border-bottom: 0px solid gainsboro; */
+}
+
+.register-input-container>div>img {
+    height: 24;
+    border: none;
+    width: 24;
+}
+
+.register-input-container>div>input[type="text"]:focus,
+.register-input-container>div>input[type="password"]:focus,
+.register-input-container>div>input[type="email"],
+.login-input-container>div>input[type="text"]:focus,
+.login-input-container>div>input[type="password"]:focus,
+.login-input-container>div>input[type="email"] {
+    outline: none;
+}
+.error-container {
+    height: 3vh;
+    display: flex;
+    align-items: center;
+    /* border-bottom: 1px solid black; */
+}
+.error {
+  font-size: 13.5px;
+  font-weight: 600;
+    color: red;
+}
+
+.file-input-container {
+    position: relative;
+    display: inline-block;
+  }
+  .file-label-text:hover {
+    cursor: pointer;
+  }
+  
+  .file-label {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    background-color: rgb(255, 242, 244);
+    border: 1px solid rgba(240, 46, 169, 0.259);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+  }
+  
+  .file-label:hover {
+    background-color: pink;
+    border-color: #89b4f5;
+  }
+  
+  .file-label-text {
+    font-size: 14px;
+    color: #333;
+    margin-right: 8px;
+  }
+  
+  .file-icon {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: #333;
+    stroke-width: 2;
+    transition: stroke 0.2s;
+  }
+  
+  .file-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  .file-input-container:hover .file-icon {
+    stroke: #555;
+  }
+  
+  .input-container {
+    border-bottom: 1px solid gainsboro;
+  }
+  .login-container form{
+    display: flex;
+    height: 45%;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .login-input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 40%;
+  }
+  .image-container {
+    flex-direction: column;
+  }
+  .image-container img {
+    object-fit: contain;
+  }
+  .image-container a {
+    color: black;
+  }

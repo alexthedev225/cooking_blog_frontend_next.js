@@ -1,0 +1,89 @@
+.header-container {
+    height: max-content;
+}
+.header-container img {
+    width: 100%;
+    object-fit: contain;
+}
+.header-navbar-container {
+    height: 20vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar-links-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 25%;
+    padding: 0;
+    list-style: none;
+}
+.navbar-links-container > * {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.navbar-links-container > * > * {
+    color: black;
+    text-decoration: none;
+}
+.navbar-links-container > * > *:hover {
+    color: rgb(189, 189, 189);
+    transition: all 0.3s ease;
+}
+.activeLink {
+    color: rgb(189, 189, 189);
+}
+.navbar-logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40%;
+    width: 45%;
+    border: 5px solid black;
+    text-decoration: none;
+    color: black;
+}
+.navbar-logo-container p {
+    text-transform: uppercase;
+    font-size: 21px;
+    letter-spacing: 5px;
+    font-weight: 700;
+    
+}
+.navbar-auth-and-social-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 25%;
+}
+.navbar-auth-and-social-container .auth-button-container {
+    padding: 0;
+    display: flex;
+    color: black;
+    width: 50;
+    text-decoration: none;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+}
+.navbar-auth-and-social-container .auth-button-container p {
+    font-weight: 600;
+    font-size: 15px;
+    width: max-content;
+}
+.navbar-auth-and-social-container .auth-button-container img {
+    height: 24px;
+    width: 20%;
+
+}
+
+
+
+.social-link-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 40%;
+}

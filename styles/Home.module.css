@@ -1,0 +1,28 @@
+.articles-items-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5rem;
+}
+.articles-items-container li {
+    display: flex;
+    height: 400px;
+    margin: 20px 0 0 0;
+    border: 2px solid rgba(240, 46, 170, 0.6);
+}
+.author-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 40%;
+}
+.post-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 50px 40px 50px;
+}
+.articles-details-container {
+    max-height: 275px;
+    overflow: hidden;
+ }
+  
