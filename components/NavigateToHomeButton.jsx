@@ -16,7 +16,7 @@ export default function NavigateToHomeButton() {
           borderRadius: "0.5rem"
         }}
       >
-        Retour a la page d'accueil
+        Retour a la page d&apos;accueil
       </button>
     </Link>
   );
