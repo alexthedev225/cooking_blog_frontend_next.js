@@ -3,7 +3,11 @@
   padding-right: 20vw;
 }
 body {
+<<<<<<< HEAD
   background-color: rgba(255, 197, 207, 0.212);
+=======
+    background-color: rgba(255, 197, 207, 0.212);
+>>>>>>> ff330fd63b4cd0e9eab247a989a48568989a53cc
 }
 *{
   padding: 0;
