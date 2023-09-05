@@ -9,10 +9,10 @@ const ubuntu = Ubuntu({
 });
 
 async function getBlogPost() {
-  const data = await axios.get(
+  const data = await fetch(
     "https://cooking-blog-backend-expres-js.onrender.com/api/articles",
     {
-      next: { revalidate: 1000 },
+      cache: "no-store",
     }
   );
   const blogPost = await data.data;
