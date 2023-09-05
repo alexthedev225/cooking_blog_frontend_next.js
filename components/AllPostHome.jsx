@@ -28,9 +28,8 @@ export default async function GetAllPostHome() {
     <ul className={`${styles["articles-items-container"]} ${ubuntu.className}`}>
       {blogPostHome &&
         blogPostHome.map((post) => (
-          
-            <li key={post._id}>
-              <Link href={`/blog/${post._id}`}>
+          <Link href={`/blog/${post._id}`} key={post._id}>
+            <li>
               {post.image && (
                 <img
                   src={`data:image/jpeg;base64,${post.image}`} // Utilisez le bon format (jpeg, png, etc.)
@@ -75,8 +74,8 @@ export default async function GetAllPostHome() {
                   <p>{post.content}</p>
                 </div>
               </div>
-              </Link>
             </li>
+          </Link>
         ))}
     </ul>
   );
