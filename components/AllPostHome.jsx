@@ -14,7 +14,7 @@ async function getBlogPost() {
   const data = await fetch(
     `https://cooking-blog-backend-expres-js.onrender.com/api/articles?limitToFive=${limitToFive}`,
     {
-      cache: "no-store",
+      next: { revalidate: 3600 },
     }
   );
   const blogPostHome = await data.json();
@@ -28,8 +28,9 @@ export default async function GetAllPostHome() {
     <ul className={`${styles["articles-items-container"]} ${ubuntu.className}`}>
       {blogPostHome &&
         blogPostHome.map((post) => (
-          <Link href={`/blog/${post._id}`}>
+          
             <li key={post._id}>
+              <Link href={`/blog/${post._id}`}>
               {post.image && (
                 <img
                   src={`data:image/jpeg;base64,${post.image}`} // Utilisez le bon format (jpeg, png, etc.)
@@ -74,8 +75,8 @@ export default async function GetAllPostHome() {
                   <p>{post.content}</p>
                 </div>
               </div>
+              </Link>
             </li>
-          </Link>
         ))}
     </ul>
   );
