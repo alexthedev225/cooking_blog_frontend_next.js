@@ -1,12 +1,14 @@
-"use client"
-import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+"use client";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useCookies } from "react-cookie";
 
 export default function Page({ params }) {
+  const [cookies] = useCookies(["token", "userId"]);
   const [article, setArticle] = useState({
-    title: '',
-    content: '',
-    image: '',
+    title: "",
+    content: "",
+    image: "",
   });
 
   const [imageFile, setImageFile] = useState(null); // State pour stocker le fichier image
@@ -18,18 +20,21 @@ export default function Page({ params }) {
   useEffect(() => {
     const getArticleDetails = async () => {
       try {
-        const response = await fetch(`https://cooking-blog-backend-expres-js.onrender.com/api/articles/${articleId}`, {
-          cache: 'no-store',
-        });
+        const response = await fetch(
+          `https://cooking-blog-backend-expres-js.onrender.com/api/articles/${articleId}`,
+          {
+            cache: "no-store",
+          }
+        );
 
         if (!response.ok) {
-          throw new Error('Article non trouvé');
+          throw new Error("Article non trouvé");
         }
 
         const articleData = await response.json();
         setArticle(articleData);
       } catch (error) {
-        console.error('Erreur lors de la récupération de l\'article', error);
+        console.error("Erreur lors de la récupération de l'article", error);
       }
     };
 
@@ -42,25 +47,31 @@ export default function Page({ params }) {
     try {
       const formData = new FormData(); // Créez un objet FormData pour envoyer le fichier image
 
-      formData.append('title', article.title);
-      formData.append('content', article.content);
+      formData.append("title", article.title);
+      formData.append("content", article.content);
 
       if (imageFile) {
-        formData.append('image', imageFile); // Ajoutez le fichier image au FormData s'il a été sélectionné
+        formData.append("image", imageFile); // Ajoutez le fichier image au FormData s'il a été sélectionné
       }
 
-      const response = await fetch(`https://cooking-blog-backend-expres-js.onrender.com/api/articles/${articleId}`, {
-        method: 'PUT',
-        body: formData, // Utilisez FormData comme corps de la requête
-      });
+      const response = await fetch(
+        `https://cooking-blog-backend-expres-js.onrender.com/api/articles/${articleId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${cookies.token}`, // Ajout du jeton d'authentification
+          },
+          method: "PUT",
+          body: formData, // Utilisez FormData comme corps de la requête
+        }
+      );
 
       if (!response.ok) {
-        throw new Error('La mise à jour a échoué');
+        throw new Error("La mise à jour a échoué");
       }
 
       router.push(`/blog/${articleId}`);
     } catch (error) {
-      console.error('Erreur lors de la mise à jour de l\'article', error);
+      console.error("Erreur lors de la mise à jour de l'article", error);
     }
   };
 
