@@ -1,6 +1,5 @@
 import GetAllPostHome from "@/components/AllPostHome";
 import NavigateToAllPostsButton from "@/components/NavigateToAllPostsButton";
-import Link from "next/link";
 
 export default function Home() {
   return (

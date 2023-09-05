@@ -28,20 +28,20 @@ export default async function GetAllPostHome() {
     <ul className={`${styles["articles-items-container"]} ${ubuntu.className}`}>
       {blogPostHome &&
         blogPostHome.map((post) => (
-          <li key={post._id}>
-            {post.image && (
-              <img
-                src={`data:image/jpeg;base64,${post.image}`} // Utilisez le bon format (jpeg, png, etc.)
-                alt={post.title}
-                style={{
-                  objectFit: "cover",
-                }}
-                height={"auto"}
-                width={450}
-              />
-            )}
-            <div className={styles["post-container"]}>
-              <Link href={`/blog/${post._id}`}>
+          <Link href={`/blog/${post._id}`}>
+            <li key={post._id}>
+              {post.image && (
+                <img
+                  src={`data:image/jpeg;base64,${post.image}`} // Utilisez le bon format (jpeg, png, etc.)
+                  alt={post.title}
+                  style={{
+                    objectFit: "cover",
+                  }}
+                  height={"auto"}
+                  width={450}
+                />
+              )}
+              <div className={styles["post-container"]}>
                 <div className={styles["author-container"]}>
                   {post.author?.imageProfil && (
                     <img
@@ -69,13 +69,13 @@ export default async function GetAllPostHome() {
                     </p>
                   </div>
                 </div>
-              </Link>
-              <div className={styles["articles-details-container"]}>
-                <h2>{post.title}</h2>
-                <p>{post.content}</p>
+                <div className={styles["articles-details-container"]}>
+                  <h2>{post.title}</h2>
+                  <p>{post.content}</p>
+                </div>
               </div>
-            </div>
-          </li>
+            </li>
+          </Link>
         ))}
     </ul>
   );

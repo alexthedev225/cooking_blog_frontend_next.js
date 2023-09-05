@@ -1,22 +1,10 @@
 import Link from "next/link";
+import styles from '@/styles/Button.module.css'
 
 function EditArticleButton({ articleId }) {
   return (
     <Link href={`/blog/${articleId}/update`}>
-      <button
-        style={{
-          height: "3rem",
-          width: "15rem",
-          backgroundColor: "hotpink",
-          color: "white",
-          border: "none",
-          fontSize: "16px",
-          cursor: "pointer",
-          borderRadius: "0.5rem",
-        }}
-      >
-        Modifier l&apos;article
-      </button>
+      <button className={styles['link-button']}>Modifier l&apos;article</button>
     </Link>
   );
 }
