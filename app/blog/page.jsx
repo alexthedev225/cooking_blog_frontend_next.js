@@ -12,8 +12,7 @@ async function getBlogPost() {
   const data = await axios.get(
     "https://cooking-blog-backend-expres-js.onrender.com/api/articles",
     {
-      cache: "no-store",
-      next: { revalidate: 2000 },
+      next: { revalidate: 1000 },
     }
   );
   const blogPost = await data.data;

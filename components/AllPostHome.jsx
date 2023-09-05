@@ -14,7 +14,7 @@ async function getBlogPost() {
   const data = await fetch(
     `https://cooking-blog-backend-expres-js.onrender.com/api/articles?limitToFive=${limitToFive}`,
     {
-      next: { revalidate: 3600 },
+      next: { revalidate: 1000 },
     }
   );
   const blogPostHome = await data.json();

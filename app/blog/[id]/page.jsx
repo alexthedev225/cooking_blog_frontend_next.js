@@ -3,7 +3,7 @@ import React from "react";
 
 async function getArticleById(id) {
   const response = await fetch(`https://cooking-blog-backend-expres-js.onrender.com/api/articles/${id}`, {
-    cache: "no-store",
+    next: { revalidate: 1000 },
   });
   const article = await response.json();
   return article;
