@@ -47,7 +47,7 @@ export default function DeleteArticleButton({ articleId }) {
 
   return (
     <button className={styles["button-danger"]} onClick={handleDelete}>
-      Supprimer l'article
+      Supprimer l&apos;article
     </button>
   );
 }
