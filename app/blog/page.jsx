@@ -15,7 +15,7 @@ async function getBlogPost() {
       cache: "no-store",
     }
   );
-  const blogPost = await data.data;
+  const blogPost = await data.json();
   return blogPost;
 }
 

@@ -1,4 +1,4 @@
-.link-button {
+.button {
     background-color: hotpink;
     margin: 2rem;
     padding: 14px 3.5rem 14px 3.5rem;
@@ -8,7 +8,17 @@
     cursor: pointer;
     border-radius: 0.5rem;
 }
-.link-button:hover {
+.button:hover {
     transition: all ease 0.3s;
     padding: 16px 3.6rem 16px 3.6rem;
+}
+.button-danger {
+    background-color: #ff2929;
+    margin: 1rem;
+    padding: 14px 3.5rem 14px 3.5rem;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 0.5rem;
 }

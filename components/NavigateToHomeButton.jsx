@@ -6,7 +6,7 @@ export default function NavigateToHomeButton() {
   return (
     <Link href={"/"}>
       <button
-       className={styles['link-button']}
+       className={styles['button']}
        style={{
         margin: 0
        }}
