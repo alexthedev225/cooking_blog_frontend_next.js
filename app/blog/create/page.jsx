@@ -14,7 +14,7 @@ export default function CreateArticle() {
   const [cookies] = useCookies(["token", "userId"]); // Utilisation des cookies
 
   const handleSubmit = async (e) => {
-
+    e.preventDefault()
     const formData = new FormData();
     formData.append("title", title);
     formData.append("subTitle", subTitle);
