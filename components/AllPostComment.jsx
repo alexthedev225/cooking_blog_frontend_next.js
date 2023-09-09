@@ -10,11 +10,6 @@ export default function AllPostComment() {
 
   const fetchComments = async () => {
     try {
-      // Vérifiez si les commentaires sont en cache côté client
-      const cachedComments = localStorage.getItem("cachedComments");
-      if (cachedComments) {
-        setComments(JSON.parse(cachedComments));
-      }
 
       const response = await fetch("https://cooking-blog-backend-express-js.onrender.com/api/comments", {
         cache: "no-store",
@@ -23,9 +18,6 @@ export default function AllPostComment() {
       if (response.ok) {
         const data = await response.json();
         setComments(data);
-
-        // Mettez à jour le cache côté client avec les nouveaux commentaires
-        localStorage.setItem("cachedComments", JSON.stringify(data));
       } else {
         console.error("Erreur lors du chargement des commentaires");
       }
