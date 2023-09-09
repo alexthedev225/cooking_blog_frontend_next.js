@@ -6,31 +6,9 @@ import io from "socket.io-client"; // Importez Socket.io
 const socket = io("https://cooking-blog-backend-express-js.onrender.com"); // Remplacez l'URL par l'URL de votre serveur Socket.io
 export default function AllPostComment({articleId}) {
   const [comments, setComments] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  const fetchComments = async () => {
-    try {
-
-      const response = await fetch("https://cooking-blog-backend-express-js.onrender.com/api/comments", {
-        cache: "no-store",
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        setComments(data);
-      } else {
-        console.error("Erreur lors du chargement des commentaires");
-      }
-    } catch (error) {
-      console.error("Erreur lors du chargement des commentaires", error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+ 
   useEffect(() => {
-    if (comments.length === 0) {
-      fetchComments(); // Appel uniquement si les commentaires ne sont pas déjà chargés
-    }
+
     // Écoutez l'événement "comments" et mettez à jour les commentaires lorsque de nouveaux commentaires sont émis
     socket.on(`comments_article_${articleId}`, (newComment) => {
       setComments((prevComments) => [...prevComments, newComment]);
@@ -78,20 +56,7 @@ export default function AllPostComment({articleId}) {
 
   return (
     <div>
-      {isLoading ? ( // Affichez le spinner pendant le chargement
-        <div className="spinner">
-          <TailSpin
-            height="80"
-            width="80"
-            color="hotpink"
-            ariaLabel="tail-spin-loading"
-            radius="1"
-            wrapperStyle={{}}
-            wrapperClass=""
-            visible={true}
-          />
-        </div>
-      ) : (
+     
         <div>
           {comments.map((comment) => (
             <div key={comment._id}>
@@ -115,7 +80,7 @@ export default function AllPostComment({articleId}) {
             </div>
           ))}
         </div>
-      )}
+    
     </div>
   );
 }
