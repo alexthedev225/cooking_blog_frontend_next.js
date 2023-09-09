@@ -28,8 +28,9 @@ export default function AllPostComment({articleId}) {
     }
   };
   useEffect(() => {
-    fetchComments(); // Assurez-vous d'appeler fetchComments initialement pour charger les commentaires existants
- 
+    if (comments.length === 0) {
+      fetchComments(); // Appel uniquement si les commentaires ne sont pas déjà chargés
+    }
     // Écoutez l'événement "comments" et mettez à jour les commentaires lorsque de nouveaux commentaires sont émis
     socket.on(`comments_article_${articleId}`, (newComment) => {
       setComments((prevComments) => [...prevComments, newComment]);
