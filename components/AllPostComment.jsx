@@ -4,36 +4,43 @@ import { TailSpin } from "react-loader-spinner";
 import io from "socket.io-client"; // Importez Socket.io
 
 const socket = io("https://cooking-blog-backend-express-js.onrender.com"); // Remplacez l'URL par l'URL de votre serveur Socket.io
-export default function AllPostComment({ articleId }) {
+export default function AllPostComment({articleId}) {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const fetchCommentsByArticle = async () => {
+  const fetchComments = async () => {
     try {
-      // Émettez l'événement "get_comments_article" pour demander les commentaires de l'article spécifique
-      socket.emit("get_comments_article", articleId);
 
-      socket.on(`comments_article_${articleId}`, (newComment) => {
-        // Mettez à jour les commentaires lorsque de nouveaux commentaires sont émis
-        setComments((prevComments) => [...prevComments, newComment]);
-        setIsLoading(false); // Arrêtez le chargement une fois les commentaires récupérés
+      const response = await fetch("https://cooking-blog-backend-express-js.onrender.com/api/comments", {
+        cache: "no-store",
       });
+
+      if (response.ok) {
+        const data = await response.json();
+        setComments(data);
+      } else {
+        console.error("Erreur lors du chargement des commentaires");
+      }
     } catch (error) {
       console.error("Erreur lors du chargement des commentaires", error);
-      setIsLoading(false); // Assurez-vous d'arrêter le chargement en cas d'erreur
+    } finally {
+      setIsLoading(false);
     }
   };
-
   useEffect(() => {
     if (comments.length === 0) {
-      fetchCommentsByArticle(); // Appel uniquement si les commentaires ne sont pas déjà chargés
+      fetchComments(); // Appel uniquement si les commentaires ne sont pas déjà chargés
     }
-
+    // Écoutez l'événement "comments" et mettez à jour les commentaires lorsque de nouveaux commentaires sont émis
+    socket.on(`comments_article_${articleId}`, (newComment) => {
+      setComments((prevComments) => [...prevComments, newComment]);
+    });
+  
     // Nettoyez l'écouteur d'événement lorsque le composant est démonté
     return () => {
       socket.off(`comments_article_${articleId}`);
     };
-  }, [articleId]);
+  }, []);
 
   function getBase64Image(imageData) {
     const binaryData = Buffer.from(imageData);
@@ -71,8 +78,7 @@ export default function AllPostComment({ articleId }) {
 
   return (
     <div>
-      {isLoading ? (
-        // Affichez le spinner pendant le chargement
+      {isLoading ? ( // Affichez le spinner pendant le chargement
         <div className="spinner">
           <TailSpin
             height="80"
