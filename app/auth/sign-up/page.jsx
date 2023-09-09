@@ -51,7 +51,7 @@ const SignUpForm = () => {
         formData.append("imageProfil", values.imageProfil);
 
         const response = await axios.post(
-          "https://cooking-blog-backend-expres-js.onrender.com/api/users/register",
+          "https://cooking-blog-backend-express-js.onrender.com/api/users/register",
           formData,
           {
             headers: {
@@ -143,7 +143,7 @@ const SignUpForm = () => {
                 ) : null}
               </div>
               <div className={styles["input-container"]}>
-                <Image
+                <img
                   src="/password2.gif"
                   alt="password2"
                   height={20}

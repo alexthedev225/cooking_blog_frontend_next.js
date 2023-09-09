@@ -6,23 +6,24 @@ import { useRouter } from "next/navigation";
 
 export default function CreateArticle() {
   const [title, setTitle] = useState("");
+  const [subTitle, setSubTitle] = useState("");
   const [content, setContent] = useState("");
   const [image, setImage] = useState(null);
 
-  const router = useRouter()
+  const router = useRouter();
   const [cookies] = useCookies(["token", "userId"]); // Utilisation des cookies
- 
+
   const handleSubmit = async (e) => {
-    e.preventDefault();
 
     const formData = new FormData();
     formData.append("title", title);
+    formData.append("subTitle", subTitle);
     formData.append("content", content);
     formData.append("image", image);
-   
+
     try {
       const response = await axios.post(
-        "https://cooking-blog-backend-expres-js.onrender.com/api/articles",
+        "https://cooking-blog-backend-express-js.onrender.com/api/articles",
         formData,
         {
           headers: {
@@ -31,7 +32,7 @@ export default function CreateArticle() {
           },
         }
       );
-        router.push('/blog')
+      router.push("/blog");
       console.log("Article created:", response.data);
       // Vous pouvez naviguer vers une page de succès ou mettre à jour l'interface utilisateur si nécessaire
     } catch (error) {
@@ -44,11 +45,25 @@ export default function CreateArticle() {
     <div>
       <h1>Create New Article</h1>
       <form onSubmit={handleSubmit}>
-        <label>Title</label>
-        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+        <label>Titre</label>
+        <input
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
         <br />
-        <label>Content</label>
-        <textarea value={content} onChange={(e) => setContent(e.target.value)} />
+        <label>Sous Titre</label>
+        <input
+          type="text"
+          value={subTitle}
+          onChange={(e) => setSubTitle(e.target.value)}
+        />
+        <br />
+        <label>Contenue</label>
+        <textarea
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+        />
         <br />
         <label>Image</label>
         <input type="file" onChange={(e) => setImage(e.target.files[0])} />

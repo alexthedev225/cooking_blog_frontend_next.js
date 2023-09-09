@@ -4,12 +4,12 @@ import styles from "@/styles/Button.module.css";
 
 export default function NavigateToHomeButton() {
   return (
-    <Link href={"/"}>
+    <Link href={"/"} className={styles["button-link-container"]}>
       <button
-       className={styles['button']}
-       style={{
-        margin: 0
-       }}
+        className={styles["button"]}
+        style={{
+          margin: 0,
+        }}
       >
         Retour a la page d&apos;accueil
       </button>

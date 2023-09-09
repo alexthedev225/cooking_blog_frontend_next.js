@@ -52,11 +52,13 @@
     width: 8rem;
     border-radius: 0.5rem;
     color: white;
+    cursor: pointer;
 }
 .register-container form>button:hover,
 .login-container form>button:hover
  {
-  cursor: pointer;
+  transition: all ease 0.3s;
+  background-color: rgba(255, 105, 180, 0.728);
 }
 
 .register-container form>h1,

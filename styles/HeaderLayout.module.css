@@ -1,9 +1,10 @@
 .header-container {
     height: max-content;
+    margin-bottom: 1rem;
 }
 .header-container img {
     width: 100%;
-    object-fit: contain;
+    object-fit: cover;
 }
 .header-navbar-container {
     height: 20vh;

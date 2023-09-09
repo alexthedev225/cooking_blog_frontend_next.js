@@ -13,21 +13,30 @@
     margin: 20px 0 0 0;
     border: 2px solid rgba(240, 46, 170, 0.6);
 }
-.author-container {
+.author-info {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 40%;
+    width: 50%;
 }
 .post-container {
+    height: 100%;
     background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 20px 50px 40px 50px;
+    padding: 20px 40px 20px 40px;
 }
-.articles-details-container {
-    max-height: 275px;
-    overflow: hidden;
+.post-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 60%;
+}
+.post-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 70%;
  }
   

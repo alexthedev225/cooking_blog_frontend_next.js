@@ -21,7 +21,7 @@ export default function Page({ params }) {
     const getArticleDetails = async () => {
       try {
         const response = await fetch(
-          `https://cooking-blog-backend-expres-js.onrender.com/api/articles/${articleId}`,
+          `https://cooking-blog-backend-express-js.onrender.com/api/articles/${articleId}`,
           {
             cache: "no-store",
           }
@@ -55,7 +55,7 @@ export default function Page({ params }) {
       }
 
       const response = await fetch(
-        `https://cooking-blog-backend-expres-js.onrender.com/api/articles/${articleId}`,
+        `https://cooking-blog-backend-express-js.onrender.com/api/articles/${articleId}`,
         {
           headers: {
             Authorization: `Bearer ${cookies.token}`, // Ajout du jeton d'authentification

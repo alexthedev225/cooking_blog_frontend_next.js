@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 
 async function getArticleById(id) {
-  const response = await fetch(`https://cooking-blog-backend-expres-js.onrender.com/api/articles/${id}`, {
+  const response = await fetch(`https://cooking-blog-backend-express-js.onrender.com/api/articles/${id}`, {
     cache: "no-store",
   });
   const article = await response.json();

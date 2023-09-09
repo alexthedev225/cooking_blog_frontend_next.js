@@ -28,7 +28,7 @@ const SignInForm = () => {
   const handleSignIn = async (values, actions) => {
     try {
       const response = await axios.post(
-        "https://cooking-blog-backend-expres-js.onrender.com/api/users/login",
+        "https://cooking-blog-backend-express-js.onrender.com/api/users/login",
         {
           email: values.email,
           password: values.password,
@@ -95,7 +95,7 @@ const SignInForm = () => {
                   />
                 </div>
                 <div className={styles["input-container"]}>
-                  <Image
+                  <img
                     src="/password1.png"
                     alt="password1"
                     height={20}

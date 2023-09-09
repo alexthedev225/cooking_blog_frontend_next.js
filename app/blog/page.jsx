@@ -10,7 +10,7 @@ const ubuntu = Ubuntu({
 
 async function getBlogPost() {
   const data = await fetch(
-    "https://cooking-blog-backend-expres-js.onrender.com/api/articles",
+    "https://cooking-blog-backend-express-js.onrender.com/api/articles",
     {
       cache: "no-store",
     }
@@ -30,6 +30,8 @@ export default async function GetAllPost() {
           blogPost.map((post) => (
             <li key={post._id}>
               <h1>{post.title}</h1>
+              <br />
+              <h2>{post.subTitle}</h2>
               <br />
               <p>{post.content}</p>
               <div className={styles["author-container"]}>
@@ -60,6 +62,7 @@ export default async function GetAllPost() {
                   width={700}
                 />
               )}
+              {/* <p>{post.comments.content}</p> */}
             </li>
           ))}
       </ul>
