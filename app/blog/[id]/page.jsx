@@ -1,7 +1,6 @@
 import CommentInput from "@/components/CreateComment";
 import DeleteArticleButton from "@/components/DeleteArticleButton";
 import EditArticleButton from "@/components/EditArticleButton";
-import { useComments } from "@/hooks/useCommentsById";
 import styles from "@/styles/ArticleById.module.css";
 import React from "react";
 
@@ -16,7 +15,6 @@ async function getArticleById(id) {
 export default async function Page({ params }) {
   // Utilisez params.id pour accéder à l'ID de l'utilisateur depuis l'URL
   const articleId = params.id;
-  const comments = await useComments(articleId);
 
   function getBase64Image(imageData) {
     const binaryData = Buffer.from(imageData);
