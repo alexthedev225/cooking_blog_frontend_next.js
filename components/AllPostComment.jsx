@@ -4,7 +4,7 @@ import { TailSpin } from "react-loader-spinner";
 import io from "socket.io-client"; // Importez Socket.io
 
 const socket = io("https://cooking-blog-backend-express-js.onrender.com"); // Remplacez l'URL par l'URL de votre serveur Socket.io
-export default function AllPostComment() {
+export default function AllPostComment({articleId}) {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 

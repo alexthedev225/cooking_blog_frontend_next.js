@@ -68,7 +68,7 @@ export default function CommentInput({ articleId }) {
           Publier
         </button>
       </div>
-      <AllPostComment /> {/* Passez fetchComment comme prop */}
+      <AllPostComment articleId={articleId}/> {/* Passez fetchComment comme prop */}
     </form>
   );
 }
