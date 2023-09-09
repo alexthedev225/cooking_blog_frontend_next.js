@@ -4,21 +4,33 @@ import { TailSpin } from "react-loader-spinner";
 import io from "socket.io-client"; // Importez Socket.io
 
 const socket = io("https://cooking-blog-backend-express-js.onrender.com"); // Remplacez l'URL par l'URL de votre serveur Socket.io
-export default function AllPostComment({articleId}) {
+export default function AllPostComment({ articleId }) {
   const [comments, setComments] = useState([]);
- 
+  const [isLoading, setIsLoading] = useState(true);
+
+  const fetchCommentsByArticle = async () => {
+    try {
+      // Émettez l'événement "get_comments_article" pour demander les commentaires de l'article spécifique
+      socket.emit("get_comments_article", articleId);
+
+      socket.on(`comments_article_${articleId}`, (newComment) => {
+        // Mettez à jour les commentaires lorsque de nouveaux commentaires sont émis
+        setComments((prevComments) => [...prevComments, newComment]);
+        setIsLoading(false); // Arrêtez le chargement une fois les commentaires récupérés
+      });
+    } catch (error) {
+      console.error("Erreur lors du chargement des commentaires", error);
+      setIsLoading(false); // Assurez-vous d'arrêter le chargement en cas d'erreur
+    }
+  };
+
   useEffect(() => {
-    socket.on("initial_comments", (initialComments) => {
-      setComments(initialComments);
-    });
-    // Écoutez l'événement "comments" et mettez à jour les commentaires lorsque de nouveaux commentaires sont émis
-    socket.on(`comments_article_${articleId}`, (newComment) => {
-      setComments((prevComments) => [...prevComments, newComment]);
-    });
-  
+    if (comments.length === 0) {
+      fetchCommentsByArticle(); // Appel uniquement si les commentaires ne sont pas déjà chargés
+    }
+
     // Nettoyez l'écouteur d'événement lorsque le composant est démonté
     return () => {
-      socket.off("initial_comments");
       socket.off(`comments_article_${articleId}`);
     };
   }, [articleId]);
@@ -59,7 +71,21 @@ export default function AllPostComment({articleId}) {
 
   return (
     <div>
-     
+      {isLoading ? (
+        // Affichez le spinner pendant le chargement
+        <div className="spinner">
+          <TailSpin
+            height="80"
+            width="80"
+            color="hotpink"
+            ariaLabel="tail-spin-loading"
+            radius="1"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+          />
+        </div>
+      ) : (
         <div>
           {comments.map((comment) => (
             <div key={comment._id}>
@@ -83,7 +109,7 @@ export default function AllPostComment({articleId}) {
             </div>
           ))}
         </div>
-    
+      )}
     </div>
   );
 }
