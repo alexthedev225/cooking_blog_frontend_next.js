@@ -74,9 +74,6 @@ export default async function GetAllPostHome() {
                   <div className={styles["post-details"]}>
                     <h2>{post.title}</h2>
                     <p>{post.subTitle}</p>
-                    <p>{post.comments.map((comment) => (
-                      <p>{comment.content}</p>
-                    ))}</p>
                   </div>
                 </div>
               </div>
