@@ -1,7 +1,6 @@
 import React from "react";
-import { Lora, Ubuntu } from "next/font/google";
+import { Ubuntu } from "next/font/google";
 import styles from "@/styles/Article.module.css";
-import axios from "axios";
 
 const ubuntu = Ubuntu({
   weight: "400",

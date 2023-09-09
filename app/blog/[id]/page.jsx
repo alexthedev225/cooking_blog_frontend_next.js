@@ -1,8 +1,6 @@
-import AllPostomment from "@/components/AllPostComment";
 import CommentInput from "@/components/CreateComment";
 import DeleteArticleButton from "@/components/DeleteArticleButton";
 import EditArticleButton from "@/components/EditArticleButton";
-import { CommentLength } from "@/components/PostCommentLength";
 import { useComments } from "@/hooks/useCommentsById";
 import styles from "@/styles/ArticleById.module.css";
 import React from "react";
