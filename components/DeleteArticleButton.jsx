@@ -39,7 +39,7 @@ export default function DeleteArticleButton({ articleId }) {
 
     if (confirmDelete) {
       // Appel de la fonction de suppression avec l'ID de l'article
-      deleteArticle(articleId, token, router);
+      deleteArticle();
     }
   };
 
