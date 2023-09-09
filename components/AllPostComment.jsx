@@ -29,15 +29,15 @@ export default function AllPostComment() {
   };
   useEffect(() => {
     fetchComments(); // Assurez-vous d'appeler fetchComments initialement pour charger les commentaires existants
-
+ 
     // Écoutez l'événement "comments" et mettez à jour les commentaires lorsque de nouveaux commentaires sont émis
-    socket.on("comments", (newComment) => {
+    socket.on(`comments_article_${articleId}`, (newComment) => {
       setComments((prevComments) => [...prevComments, newComment]);
     });
-
+  
     // Nettoyez l'écouteur d'événement lorsque le composant est démonté
     return () => {
-      socket.off("comments");
+      socket.off(`comments_article_${articleId}`);
     };
   }, []);
 
@@ -95,10 +95,10 @@ export default function AllPostComment() {
           {comments.map((comment) => (
             <div key={comment._id}>
               <p>{comment.content}</p>
-              <h2>{comment.author.name}</h2>
-              {comment.author?.imageProfil && (
+              <h2>{comment.authorName}</h2>
+              {comment.authorImage && (
                 <img
-                  src={getBase64Image(comment.author.imageProfil.data)}
+                  src={getBase64Image(comment.authorImage.data)}
                   height={50}
                   width={50}
                   style={{
@@ -107,7 +107,7 @@ export default function AllPostComment() {
                     objectPosition: "center",
                     border: "2px solid rgba(240, 46, 170, 0.6)",
                   }}
-                  alt={comment.author?.name}
+                  alt={comment.authorName}
                 />
               )}
               <p>Publié {formatDistanceToNow(comment.createdAt)}</p>
