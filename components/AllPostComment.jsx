@@ -8,7 +8,9 @@ export default function AllPostComment({articleId}) {
   const [comments, setComments] = useState([]);
  
   useEffect(() => {
-
+    socket.on("initial_comments", (initialComments) => {
+      setComments(initialComments);
+    });
     // Écoutez l'événement "comments" et mettez à jour les commentaires lorsque de nouveaux commentaires sont émis
     socket.on(`comments_article_${articleId}`, (newComment) => {
       setComments((prevComments) => [...prevComments, newComment]);
@@ -16,9 +18,10 @@ export default function AllPostComment({articleId}) {
   
     // Nettoyez l'écouteur d'événement lorsque le composant est démonté
     return () => {
+      socket.off("initial_comments");
       socket.off(`comments_article_${articleId}`);
     };
-  }, []);
+  }, [articleId]);
 
   function getBase64Image(imageData) {
     const binaryData = Buffer.from(imageData);
