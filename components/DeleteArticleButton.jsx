@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation"; // Importez le hook useRouter
 async function deleteArticle(articleId, token, router) {
   try {
     const response = await fetch(
-      `https://https://cooking-blog-backend-express-js.onrender.com/api/articles/${articleId}`,
+      `https://cooking-blog-backend-express-js.onrender.com/api/articles/${articleId}`,
       {
         method: "DELETE",
         headers: {
