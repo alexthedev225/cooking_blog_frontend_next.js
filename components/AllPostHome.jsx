@@ -25,7 +25,7 @@ async function getBlogPost() {
 
 async function getCommentByArticle(articleId) {
   const response = await fetch(
-    `https://cooking-blog-backend-express-js.onrender.com/api/comments/article/${articleId}`,
+    `https://cooking-blog-backend-express-js.onrender.com/api/comments/${articleId}`,
     {
       cache: "no-store",
     }

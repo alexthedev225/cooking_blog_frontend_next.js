@@ -1,10 +1,12 @@
 "use client";
-import { useEffect, useState } from "react";
+// components/AllPostComment.js
+import { Suspense, useEffect, useState } from "react";
 import { TailSpin } from "react-loader-spinner";
+import io from "socket.io-client";
 import styles from "@/styles/Comment.module.css";
-import io from "socket.io-client"; // Importez Socket.io
 
-const socket = io("https://cooking-blog-backend-express-js.onrender.com"); // Remplacez l'URL par l'URL de votre serveur Socket.io
+const socket = io("https://cooking-blog-backend-express-js.onrender.com");
+
 export default function AllPostComment({ articleId }) {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -30,17 +32,51 @@ export default function AllPostComment({ articleId }) {
       setIsLoading(false);
     }
   };
+
+  // Cette fonction met à jour la date de création de chaque commentaire
+  const updateCommentCreationTime = () => {
+    setComments((prevComments) =>
+      prevComments.map((comment) => {
+        const updatedCreatedAt = comment.originalCreatedAt
+          ? new Date(
+              new Date(comment.originalCreatedAt).getTime() +
+                (new Date() - new Date(comment.updatedAt))
+            )
+          : null;
+  
+        return {
+          ...comment,
+          createdAt: updatedCreatedAt,
+          updatedAt: new Date(),
+        };
+      })
+    );
+  };
+
+
   useEffect(() => {
     if (comments.length === 0) {
-      fetchComments(); // Appel uniquement si les commentaires ne sont pas déjà chargés
+      fetchComments();
     }
-    // Écoutez l'événement "comments" et mettez à jour les commentaires lorsque de nouveaux commentaires sont émis
-    socket.on(`comments_article_${articleId}`, (newComment) => {
-      setComments((prevComments) => [...prevComments, newComment]);
-    });
 
-    // Nettoyez l'écouteur d'événement lorsque le composant est démonté
+    // Mettre à jour périodiquement la date de création (toutes les secondes ici)
+    const updateInterval = setInterval(updateCommentCreationTime, 1000);
+
+    socket.on(`comments_article_${articleId}`, ({ comment, createdAt }) => {
+  setComments((prevComments) => [
+    ...prevComments,
+    {
+      ...comment,
+      createdAt, // Mise à jour de la date de création
+      updatedAt: new Date(), // Mettre à jour le champ updatedAt
+      originalCreatedAt: createdAt, // Stocker la date de création initiale
+    },
+  ]);
+});
+
+
     return () => {
+      clearInterval(updateInterval); // Nettoyer l'intervalle lors du démontage du composant
       socket.off(`comments_article_${articleId}`);
     };
   }, []);
@@ -58,7 +94,7 @@ export default function AllPostComment({ articleId }) {
     const minutes = Math.floor(seconds / 60);
     const hours = Math.floor(minutes / 60);
     const days = Math.floor(hours / 24);
-    const months = Math.floor(days / 30); // Approximation de 30 jours par mois
+    const months = Math.floor(days / 30);
     const years = Math.floor(months / 12);
 
     switch (true) {
@@ -82,7 +118,6 @@ export default function AllPostComment({ articleId }) {
   return (
     <>
       {isLoading ? (
-        // Spinner pendant le chargement
         <div className="spinner-container">
           <TailSpin
             height="80"
@@ -96,7 +131,6 @@ export default function AllPostComment({ articleId }) {
           />
         </div>
       ) : (
-        // Contenu des commentaires
         <div className={styles["comments-container"]}>
           {comments.map((comment) => (
             <div key={comment._id} className={styles["comment-item"]}>
@@ -108,11 +142,11 @@ export default function AllPostComment({ articleId }) {
                 />
               )}
               <div className={styles["comment-details"]}>
-                <p   className={styles["comment-author-name"]}>
+                <p className={styles["comment-author-name"]}>
                   {comment.authorName}
-                </p >
+                </p>
                 <p className={styles["comment-published"]}>
-                  Publié {formatDistanceToNow(comment.createdAt)}
+                  Publié {formatDistanceToNow(comment.originalCreatedAt)}
                 </p>
                 <p className={styles["comment-content"]}>{comment.content}</p>
               </div>
