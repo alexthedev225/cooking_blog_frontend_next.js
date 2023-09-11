@@ -116,7 +116,7 @@ const SignInForm = () => {
                   />
                 </div>
               </div>
-              <button type="submit">Se connecter</button>
+              <button type="submit">Connexion</button>
               <ErrorMessage name="general" component="div" />
             </Form>
           </Formik>

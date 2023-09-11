@@ -10,58 +10,75 @@ const ubuntu = Ubuntu({
 
 async function getBlogPost() {
   const limitToFive = true;
-
   const data = await fetch(
     `https://cooking-blog-backend-express-js.onrender.com/api/articles?limitToFive=${limitToFive}`,
     {
       cache: "no-store",
     }
   );
+  if (!data.ok) {
+    throw new Error("Erreur lors de la récupération des articles");
+  }
   const blogPostHome = await data.json();
-
   return blogPostHome;
+}
+
+async function getCommentByArticle(articleId) {
+  const response = await fetch(
+    `https://cooking-blog-backend-express-js.onrender.com/api/comments/article/${articleId}`,
+    {
+      cache: "no-store",
+    }
+  );
+  if (!response.ok) {
+    throw new Error("Erreur lors de la récupération des commentaires");
+  }
+  const data = await response.json();
+  return data;
+}
+
+async function getCommentsForArticle(articleId) {
+  const comments = await getCommentByArticle(articleId);
+  return comments;
 }
 
 export default async function GetAllPostHome() {
   const blogPostHome = await getBlogPost();
-  console.log(blogPostHome)
+  const commentsByArticle = {};
+
+  for (const post of blogPostHome) {
+    commentsByArticle[post._id] = await getCommentsForArticle(post._id);
+  }
   return (
     <ul className={`${styles["articles-items-container"]} ${ubuntu.className}`}>
-      {blogPostHome &&
-        blogPostHome.map((post) => (
+      {blogPostHome.map((post) => {
+        const comments = commentsByArticle[post._id];
+
+        return (
           <Link href={`/blog/${post._id}`} key={post._id}>
-            <li key={post._id}>
+            <li key={post._id} className={styles["article-item"]}>
               {post.image && (
                 <img
+                  className={styles["article-image"]}
                   src={`data:image/jpeg;base64,${post.image}`} // Utilisez le bon format (jpeg, png, etc.)
                   alt={post.title}
-                  style={{
-                    objectFit: "cover",
-                  }}
-                  height={"auto"}
-                  width={450}
                 />
               )}
-              <div className={styles["post-container"]}>
-                <div className={styles["post-content"]}>
+              <div className={styles["article-container"]}>
+                <div className={styles["content-group"]}>
                   <div className={styles["author-info"]}>
                     {post.author?.imageProfil && (
                       <img
-                        src={`data:image/jpeg;base64,${post.author.imageProfil}`} // Utilisez le bon format (jpeg, png, etc.)
-                        height={50}
-                        width={50}
-                        style={{
-                          borderRadius: "100%",
-                          objectFit: "cover",
-                          objectPosition: "center",
-                          border: "2px solid rgba(240, 46, 170, 0.6)",
-                        }}
+                        className={styles["author-profile-image"]}
+                        src={`data:image/jpeg;base64,${post.author.imageProfil}`}
                         alt={post.author?.name}
                       />
                     )}
-                    <div>
-                      <h4>{post.author?.name}</h4>
-                      <p>
+                    <div className={styles["author-details"]}>
+                      <h4 className={styles["author-name"]}>
+                        {post.author?.name}
+                      </h4>
+                      <p className={styles["article-date"]}>
                         {new Date(post.createdAt).toLocaleDateString("fr-FR", {
                           timeZone: "Africa/Abidjan",
                           year: "numeric",
@@ -71,15 +88,23 @@ export default async function GetAllPostHome() {
                       </p>
                     </div>
                   </div>
-                  <div className={styles["post-details"]}>
-                    <h2>{post.title}</h2>
-                    <p>{post.subTitle}</p>
+                  <div className={styles["article-details"]}>
+                    <h2 className={styles["article-title"]}>{post.title}</h2>
+                    <p className={styles["article-subtitle"]}>
+                      {post.subTitle}
+                    </p>
+                  </div>
+                </div>
+                <div className={styles["content-group"]}>
+                  <div className={styles["comment-info"]}>
+                    <p className={styles["comment-count"]}>{comments.length}</p>
                   </div>
                 </div>
               </div>
             </li>
           </Link>
-        ))}
+        );
+      })}
     </ul>
   );
 }

@@ -199,7 +199,7 @@ const SignUpForm = () => {
 
             {formik.errors.general && <p>{formik.errors.general}</p>}
 
-            <button type="submit">S&apos;inscrire</button>
+            <button type="submit">Inscription</button>
           </form>
         </div>
         <div className={styles["image-container"]}>

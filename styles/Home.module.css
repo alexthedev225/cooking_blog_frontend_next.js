@@ -1,39 +1,47 @@
 .articles-items-container {
     display: flex;
     flex-direction: column;
-    /* margin-bottom: 5rem; */
+    height: max-content;
+    width: 100%;
+    margin-top: 2rem;
 }
 .articles-items-container a {
     text-decoration: none;
     color: black;
 }
-.articles-items-container li {
+.article-image {
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+}
+.article-item {
     display: flex;
     height: 400px;
-    margin: 20px 0 0 0;
-    border: 2px solid rgba(240, 46, 170, 0.6);
-    box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+    width: 100%;
+    border: 1px solid gainsboro;
+}
 
+.article-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: max-content;
 }
 .author-info {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 50%;
+    width: max-content;
+    margin-bottom: 1rem;
 }
-.post-container {
-    height: 100%;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 20px 40px 20px 40px;
-}
-.post-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 60%;
+.author-profile-image {
+    height: 50px;
+    width: 50px;
+    margin-right: 1rem;
+    border-radius: 100%;
+    object-fit: cover;
+    object-position: center;
+    border: 2px solid gainsboro;
 }
 .post-details {
     display: flex;
@@ -41,4 +49,22 @@
     justify-content: space-between;
     height: 70%;
  }
-  
+.article-container {
+    height: 100%;
+    background-color: white;
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 40px 20px 40px;
+}
+.article-details {
+    height: max-content;
+    width: 100%;
+}
+.article-title {
+    margin-bottom: 1rem;
+}
+.comment-info {
+    border-top: 1px solid gainsboro;
+}

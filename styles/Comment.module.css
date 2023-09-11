@@ -1,0 +1,23 @@
+.comments-container {
+}
+.comment-item {
+    display: flex;
+    padding: 1rem;
+}
+.comment-item:not(:last-child) {
+    border-bottom: 1px solid gainsboro;   
+}
+  
+.comment-details {
+
+}
+.comment-author-image {
+    margin-right: 0.5rem;
+    border-radius: 100%;
+    object-fit: cover;
+    height: 45px;
+    width: 45px;
+}
+.comment-published {
+    margin-bottom: 1rem;
+}

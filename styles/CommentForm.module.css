@@ -1,5 +1,5 @@
 .comment-form {
-    border: 1px solid rgba(255, 64, 185, 0.467);
+    border: 1px solid gainsboro;
     height: max-content;
     margin: 2rem 0 2rem 0;
     padding: 1.5rem 6rem 1.5rem 6rem;
@@ -7,12 +7,12 @@
 
 .comment-header {
     padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(255, 64, 185, 0.467);
+    border-bottom: 1px solid gainsboro;
 }
 
 .comment-input-container {
     padding: 1rem;
-    border: 1px solid hotpink;
+    border: 1px solid gainsboro;
     margin-top: 2.5rem;
     height: max-content;
     margin-bottom: 1rem;
@@ -41,9 +41,7 @@
 .comment-button {
     border: none;
     background-color: hotpink;
-    height: 2.5rem;
-    width: 5rem;
-    border-radius: 0.5rem;
+    padding: 0.5rem 1rem 0.5rem 1rem;
     color: white;
     cursor: pointer;
 }

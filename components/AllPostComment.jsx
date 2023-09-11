@@ -1,19 +1,22 @@
 "use client";
 import { useEffect, useState } from "react";
 import { TailSpin } from "react-loader-spinner";
+import styles from "@/styles/Comment.module.css";
 import io from "socket.io-client"; // Importez Socket.io
 
 const socket = io("https://cooking-blog-backend-express-js.onrender.com"); // Remplacez l'URL par l'URL de votre serveur Socket.io
-export default function AllPostComment({articleId}) {
+export default function AllPostComment({ articleId }) {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchComments = async () => {
     try {
-
-      const response = await fetch("https://cooking-blog-backend-express-js.onrender.com/api/comments", {
-        cache: "no-store",
-      });
+      const response = await fetch(
+        "https://cooking-blog-backend-express-js.onrender.com/api/comments",
+        {
+          cache: "no-store",
+        }
+      );
 
       if (response.ok) {
         const data = await response.json();
@@ -35,7 +38,7 @@ export default function AllPostComment({articleId}) {
     socket.on(`comments_article_${articleId}`, (newComment) => {
       setComments((prevComments) => [...prevComments, newComment]);
     });
-  
+
     // Nettoyez l'écouteur d'événement lorsque le composant est démonté
     return () => {
       socket.off(`comments_article_${articleId}`);
@@ -77,9 +80,10 @@ export default function AllPostComment({articleId}) {
   }
 
   return (
-    <div>
-      {isLoading ? ( // Affichez le spinner pendant le chargement
-        <div className="spinner">
+    <>
+      {isLoading ? (
+        // Spinner pendant le chargement
+        <div className="spinner-container">
           <TailSpin
             height="80"
             width="80"
@@ -92,30 +96,30 @@ export default function AllPostComment({articleId}) {
           />
         </div>
       ) : (
-        <div>
+        // Contenu des commentaires
+        <div className={styles["comments-container"]}>
           {comments.map((comment) => (
-            <div key={comment._id}>
-              <p>{comment.content}</p>
-              <h2>{comment.authorName}</h2>
+            <div key={comment._id} className={styles["comment-item"]}>
               {comment.authorImage && (
                 <img
                   src={getBase64Image(comment.authorImage.data)}
-                  height={50}
-                  width={50}
-                  style={{
-                    borderRadius: "100%",
-                    objectFit: "cover",
-                    objectPosition: "center",
-                    border: "2px solid rgba(240, 46, 170, 0.6)",
-                  }}
+                  className={styles["comment-author-image"]}
                   alt={comment.authorName}
                 />
               )}
-              <p>Publié {formatDistanceToNow(comment.createdAt)}</p>
+              <div className={styles["comment-details"]}>
+                <p   className={styles["comment-author-name"]}>
+                  {comment.authorName}
+                </p >
+                <p className={styles["comment-published"]}>
+                  Publié {formatDistanceToNow(comment.createdAt)}
+                </p>
+                <p className={styles["comment-content"]}>{comment.content}</p>
+              </div>
             </div>
           ))}
         </div>
       )}
-    </div>
+    </>
   );
 }

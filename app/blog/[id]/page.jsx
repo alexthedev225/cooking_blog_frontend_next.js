@@ -36,8 +36,6 @@ export default async function Page({ params }) {
   // Utilisez une boucle pour générer les URL d'image
   const imageSrcArray = images.map((imageData) => getBase64Image(imageData));
 
-  console.log(`Auhor is : ${article.author.name}`);
-
   return (
     <>
       <div className={`${styles["article-container"]} `}>

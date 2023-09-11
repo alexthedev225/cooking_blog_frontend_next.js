@@ -44,6 +44,9 @@ dependencies:
   react-loader-spinner:
     specifier: ^5.4.5
     version: 5.4.5(@babel/core@7.22.17)(react-dom@18.2.0)(react@18.2.0)
+  react-spinners:
+    specifier: ^0.13.8
+    version: 0.13.8(react-dom@18.2.0)(react@18.2.0)
   socket.io-client:
     specifier: ^4.7.2
     version: 4.7.2(bufferutil@4.0.7)(utf-8-validate@6.0.3)
@@ -2401,6 +2404,16 @@ packages:
       styled-tools: 1.7.2
     transitivePeerDependencies:
       - '@babel/core'
+    dev: false
+
+  /react-spinners@0.13.8(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-3e+k56lUkPj0vb5NDXPVFAOkPC//XyhKPJjvcGjyMNPWsBKpplfeyialP74G7H7+It7KzhtET+MvGqbKgAqpZA==}
+    peerDependencies:
+      react: ^16.0.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.0.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /react@18.2.0:
