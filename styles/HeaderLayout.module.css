@@ -200,7 +200,18 @@
         padding-bottom: 25rem;
         background-color: white;
       }
-      
+      .navbar-links-container>* {
+        font-size: 18px;
+        text-transform: uppercase;
+    }
+    .navbar-links-container>*>*:hover {
+        color: hotpink;
+        transition: all 0.3s ease;
+    }
+    
+    .activeLink {
+        color: hotpink;
+    }
 
     .auth-button-container {
         display: none;
@@ -209,10 +220,11 @@
     .navbar-links-container.open .auth-button-container {
         display: flex;
         width: 5rem;
+        text-transform: capitalize;
     }
     .navbar-links-container.open .social-link-container {
         display: flex;
-        width: 5rem;
+        width: 7rem;
     }
 }
 
@@ -236,7 +248,6 @@
 @media screen and (max-width: 500px) {
     .navbar-links-container {
         width: 35%;
-        border: 1px solid black;
     }
     .social-link-container {
         width: 100%;

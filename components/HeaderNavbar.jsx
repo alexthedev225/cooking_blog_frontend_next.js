@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "@/styles/HeaderLayout.module.css";
 import { useRouter, usePathname } from "next/navigation";
 import { Lora } from "next/font/google";
@@ -14,7 +14,15 @@ const lora = Lora({
 export default function HeaderNavbar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
-
+  
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflowY = "hidden";
+    } else {
+      document.body.style.overflowY = "";
+    }
+  }, [isOpen]);
+  
   return (
     <nav className={`${styles["header-navbar-container"]} `}>
       <button
