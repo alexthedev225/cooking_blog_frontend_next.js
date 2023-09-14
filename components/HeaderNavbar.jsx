@@ -14,12 +14,12 @@ const lora = Lora({
 export default function HeaderNavbar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
-  
+
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflowY = "hidden";
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflowY = "";
+      document.body.style.overflow = "";
     }
   }, [isOpen]);
   
