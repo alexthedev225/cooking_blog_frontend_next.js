@@ -16,7 +16,7 @@
 }
 .article-item {
     display: flex;
-    height: 400px;
+    height: 370px;
     width: 100%;
     border: 1px solid gainsboro;
 }
@@ -43,12 +43,6 @@
     object-position: center;
     border: 2px solid gainsboro;
 }
-.post-details {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 70%;
- }
 .article-container {
     height: 100%;
     background-color: white;
@@ -64,7 +58,45 @@
 }
 .article-title {
     margin-bottom: 1rem;
+    font-weight: 300;
+    font-size: 28px;
 }
 .comment-info {
     border-top: 1px solid gainsboro;
+    padding-top: 1rem;
+}
+.comment-section {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+.comment-count {
+    margin-right: 0.4rem;
+}
+.comment-icon {
+    display: none;
+    margin-right: 1rem;
+}
+.article-subtitle, .comment-section, .author-details {
+    color: rgba(0, 0, 0, 0.685);
+}
+@media screen and (max-width: 800px) {
+    .article-item {
+        height: max-content;
+        flex-direction: column;
+    }
+    .article-item > * {
+        width: 100%;
+    }
+    .article-subtitle {
+        margin-bottom: 3rem;
+    } 
+}
+@media screen and (max-width: 500px) {
+    .comment-label {
+        display: none;
+    }
+    .comment-icon {
+        display: block;
+    }
 }

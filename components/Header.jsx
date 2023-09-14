@@ -3,7 +3,8 @@ import React from "react";
 import { usePathname } from 'next/navigation';
 import HeaderImage from "./HeaderImage";
 import HeaderNavbar from "./HeaderNavbar";
-import styles from "@/styles/HeaderLayout.module.css"
+import styles from "@/styles/Header.module.css"
+import HeaderLogo from "./HeaderLogo";
 
 export default function Header() {
   const pathname = usePathname();
@@ -13,6 +14,7 @@ export default function Header() {
   return (
     <div className={styles['header-container']}>
       <HeaderNavbar />
+      <HeaderLogo />
       <HeaderImage />
     </div>
   );

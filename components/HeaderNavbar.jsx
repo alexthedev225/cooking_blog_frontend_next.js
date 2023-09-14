@@ -1,11 +1,10 @@
-"use client"
+"use client";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import styles from "@/styles/HeaderLayout.module.css";
 import { useRouter, usePathname } from "next/navigation";
 import { Lora } from "next/font/google";
-import Image from "next/image";
-
+import HeaderLogo from "./HeaderLogo";
 
 const lora = Lora({
   weight: "700",
@@ -13,11 +12,32 @@ const lora = Lora({
 });
 
 export default function HeaderNavbar() {
-  const pathname = usePathname()
+  const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
-    <nav className={styles["header-navbar-container"]}>
-      <ul className={styles["navbar-links-container"]}>
+    <nav className={`${styles["header-navbar-container"]} `}>
+      <button
+        className={`${styles["burger-button"]} ${isOpen ? styles.open : ""}`}
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul
+        className={`${styles["navbar-links-container"]} ${
+          isOpen ? styles.open : ""
+        }`}
+      >
+        <Link
+          href={"/auth/sign-in"}
+          className={styles["auth-button-container"]}
+        >
+          <img src={"/user.png"} height={32} width={32} alt="connexion" />
+          <p>Connexion</p>
+        </Link>
         <li>
           <Link
             href={"/"}
@@ -29,9 +49,7 @@ export default function HeaderNavbar() {
         <li>
           <Link
             href={"/blog"}
-            className={`${
-              pathname === "/blog" ? styles.activeLink : ""
-            }`}
+            className={`${pathname === "/blog" ? styles.activeLink : ""}`}
           >
             blog
           </Link>
@@ -39,34 +57,48 @@ export default function HeaderNavbar() {
         <li>
           <Link
             href={"/about"}
-            className={`${
-              pathname === "/a-propos" ? styles.activeLink : ""
-            }`}
+            className={`${pathname === "/a-propos" ? styles.activeLink : ""}`}
           >
             à propos
           </Link>
         </li>
+        <div className={styles["social-link-container"]}>
+          <a href="#">
+            <img src="/facebook.png" alt="facebook" />
+          </a>
+          <a href="#">
+            <img src="/pinterest.png" alt="pinterest" />
+          </a>
+          <a href="#">
+            <img src="/twitter.png" alt="twitter" />
+          </a>
+          <a href="#">
+            <img src="/instagram.png" alt="instagram" />
+          </a>
+        </div>
       </ul>
-      <Link href={"/"} className={styles["navbar-logo-container"]}>
-        <p className={lora.className}>delices & saveurs</p>
-      </Link>
+
+      <HeaderLogo />
       <div className={styles["navbar-auth-and-social-container"]}>
-        <Link href={"/auth/sign-in"} className={styles["auth-button-container"]}>
-          <Image src={"/user.png"} height={32} width={32} alt="connexion" />
+        <Link
+          href={"/auth/sign-in"}
+          className={styles["auth-button-container"]}
+        >
+          <img src={"/user.png"} height={32} width={32} alt="connexion" />
           <p>Connexion</p>
         </Link>
         <div className={styles["social-link-container"]}>
           <a href="#">
-            <Image src="/facebook.png" alt="facebook" height={21} width={21} />
+            <img src="/facebook.png" alt="facebook" />
           </a>
           <a href="#">
-            <Image src="/pinterest.png" alt="pinterest" height={21} width={21}/>
+            <img src="/pinterest.png" alt="pinterest" />
           </a>
           <a href="#">
-            <Image src="/twitter.png" alt="twitter" height={21} width={21}/>
+            <img src="/twitter.png" alt="twitter" />
           </a>
           <a href="#">
-            <Image src="/instagram.png" alt="instagram"  height={21} width={21}/>
+            <img src="/instagram.png" alt="instagram" />
           </a>
         </div>
       </div>

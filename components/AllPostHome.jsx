@@ -75,9 +75,9 @@ export default async function GetAllPostHome() {
                       />
                     )}
                     <div className={styles["author-details"]}>
-                      <h4 className={styles["author-name"]}>
+                      <p className={styles["author-name"]}>
                         {post.author?.name}
-                      </h4>
+                      </p>
                       <p className={styles["article-date"]}>
                         {new Date(post.createdAt).toLocaleDateString("fr-FR", {
                           timeZone: "Africa/Abidjan",
@@ -89,7 +89,7 @@ export default async function GetAllPostHome() {
                     </div>
                   </div>
                   <div className={styles["article-details"]}>
-                    <h2 className={styles["article-title"]}>{post.title}</h2>
+                    <p className={styles["article-title"]}>{post.title}</p>
                     <p className={styles["article-subtitle"]}>
                       {post.subTitle}
                     </p>
@@ -97,7 +97,19 @@ export default async function GetAllPostHome() {
                 </div>
                 <div className={styles["content-group"]}>
                   <div className={styles["comment-info"]}>
-                    <p className={styles["comment-count"]}>{comments.length}</p>
+                    <div className={styles["comment-section"]}>
+                      <img
+                        className={styles["comment-icon"]}
+                        src="/message.png"
+                        alt="commentaire icone"
+                        height={20}
+                        width={20}
+                      />
+                      <p className={styles["comment-count"]}>
+                        {comments.length}
+                      </p>
+                      <p className={styles["comment-label"]}>Commentaires</p>
+                    </div>
                   </div>
                 </div>
               </div>
