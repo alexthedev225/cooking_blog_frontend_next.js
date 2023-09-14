@@ -133,6 +133,7 @@
 @media screen and (max-width: 1200px) {
     .header-navbar-container {
         flex-direction: row-reverse;
+        
     }
     .navbar-links-container {
         width: 25%;
