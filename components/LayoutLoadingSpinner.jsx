@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
-import {Oval, TailSpin} from "react-loader-spinner";
-import styles from "@/styles/Loading.module.css";
+import styles from "@/styles/LayoutLoadingSpinner.module.css";
 
 export default function LoadingSpinner() {
   return (

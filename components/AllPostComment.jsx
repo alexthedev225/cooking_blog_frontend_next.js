@@ -43,7 +43,7 @@ export default function AllPostComment({ articleId }) {
                 (new Date() - new Date(comment.updatedAt))
             )
           : null;
-  
+
         return {
           ...comment,
           createdAt: updatedCreatedAt,
@@ -52,7 +52,6 @@ export default function AllPostComment({ articleId }) {
       })
     );
   };
-
 
   useEffect(() => {
     if (comments.length === 0) {
@@ -63,17 +62,16 @@ export default function AllPostComment({ articleId }) {
     const updateInterval = setInterval(updateCommentCreationTime, 1000);
 
     socket.on(`comments_article_${articleId}`, ({ comment, createdAt }) => {
-  setComments((prevComments) => [
-    ...prevComments,
-    {
-      ...comment,
-      createdAt, // Mise à jour de la date de création
-      updatedAt: new Date(), // Mettre à jour le champ updatedAt
-      originalCreatedAt: createdAt, // Stocker la date de création initiale
-    },
-  ]);
-});
-
+      setComments((prevComments) => [
+        ...prevComments,
+        {
+          ...comment,
+          createdAt, // Mise à jour de la date de création
+          updatedAt: new Date(), // Mettre à jour le champ updatedAt
+          originalCreatedAt: createdAt, // Stocker la date de création initiale
+        },
+      ]);
+    });
 
     return () => {
       clearInterval(updateInterval); // Nettoyer l'intervalle lors du démontage du composant
@@ -134,22 +132,24 @@ export default function AllPostComment({ articleId }) {
         <div className={styles["comments-container"]}>
           {comments.map((comment) => (
             <div key={comment._id} className={styles["comment-item"]}>
-              {comment.authorImage && (
-                <img
-                  src={getBase64Image(comment.authorImage.data)}
-                  className={styles["comment-author-image"]}
-                  alt={comment.authorName}
-                />
-              )}
-              <div className={styles["comment-details"]}>
-                <p className={styles["comment-author-name"]}>
-                  {comment.authorName}
-                </p>
-                <p className={styles["comment-published"]}>
-                  Publié {formatDistanceToNow(comment.originalCreatedAt)}
-                </p>
-                <p className={styles["comment-content"]}>{comment.content}</p>
+              <div className={styles["comment-author"]}>
+                {comment.authorImage && (
+                  <img
+                    src={getBase64Image(comment.authorImage.data)}
+                    className={styles["comment-author-image"]}
+                    alt={comment.authorName}
+                  />
+                )}
+                <div className={styles["comment-author-details"]}>
+                  <p className={styles["comment-author-name"]}>
+                    {comment.authorName}
+                  </p>
+                  <p className={styles["comment-published"]}>
+                    Publié {formatDistanceToNow(comment.originalCreatedAt)}
+                  </p>
+                </div>
               </div>
+              <p className={styles["comment-text"]}>{comment.content}</p>
             </div>
           ))}
         </div>

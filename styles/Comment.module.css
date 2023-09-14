@@ -1,16 +1,16 @@
-.comments-container {
-}
+
 .comment-item {
     display: flex;
+    flex-direction: column;
     padding: 1rem;
+}
+.comment-author {
+    display: flex;
 }
 .comment-item:not(:last-child) {
     border-bottom: 1px solid gainsboro;   
 }
   
-.comment-details {
-
-}
 .comment-author-image {
     margin-right: 0.5rem;
     border-radius: 100%;
@@ -18,6 +18,15 @@
     height: 45px;
     width: 45px;
 }
+
 .comment-published {
     margin-bottom: 1rem;
+}
+.comment-text {
+    margin-left: 3.4rem;
+}
+@media screen and (max-width: 400px) {
+    .comment-text {
+        margin-left: 0;
+    }
 }

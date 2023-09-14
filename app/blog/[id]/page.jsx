@@ -5,9 +5,12 @@ import styles from "@/styles/ArticleById.module.css";
 import React from "react";
 
 async function getArticleById(id) {
-  const response = await fetch(`https://cooking-blog-backend-express-js.onrender.com/api/articles/${id}`, {
-    cache: "no-store",
-  });
+  const response = await fetch(
+    `https://cooking-blog-backend-express-js.onrender.com/api/articles/${id}`,
+    {
+      cache: "no-store",
+    }
+  );
   const article = await response.json();
   return article;
 }
@@ -49,19 +52,18 @@ export default async function Page({ params }) {
                 className={styles["author-avatar"]}
               />
             )}
-            <p className={styles["author-name"]}>{article.author?.name}</p>
-            <ul>
-              <li>
-                <p>
-                  {new Date(article.createdAt).toLocaleDateString("fr-FR", {
-                    timeZone: "Africa/Abidjan",
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
-                </p>
-              </li>
-            </ul>
+            <div className={styles["article-info"]}>
+              <p className={styles["author-name"]}>{article.author?.name}</p>
+              <span></span>
+              <p className={styles["article-date"]}>
+                {new Date(article.createdAt).toLocaleDateString("fr-FR", {
+                  timeZone: "Africa/Abidjan",
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </p>
+            </div>
           </div>
           <h2 className={styles["article-title"]}>{article.title}</h2>
           <h3 className={styles["article-subtitle"]}>{article.subTitle}</h3>
@@ -74,13 +76,12 @@ export default async function Page({ params }) {
             />
           )}
           <p className={styles["article-content"]}>{article.content}</p>
-          
         </div>
       </div>
       <CommentInput articleId={articleId} />
       <div className={styles["article-actions"]}>
-        <EditArticleButton articleId={articleId} margin={0} />
-        <DeleteArticleButton articleId={articleId} />
+        <EditArticleButton articleId={articleId} margin={"0 0 2rem 0"} />
+        <DeleteArticleButton articleId={articleId} margin={"0 0 2rem 0"} />
       </div>
     </>
   );

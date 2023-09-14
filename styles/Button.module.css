@@ -1,26 +1,18 @@
 .button-link-container {
-    display: flex;
-    justify-content: center;
-    text-decoration: none;
-    height: max-content;
-    width: max-content;
-}
-
-.button {
-    background-color: hotpink;
+    background-color: black;
     margin: 2rem;
     padding: 14px 3.5rem 14px 3.5rem;
     color: white;
-    border: 2px solid hotpink;
+    border: 2px solid black;
     font-size: 16px;
     cursor: pointer;
-    /* border-radius: 0.5rem; */
+    text-decoration: none;
 }
 
-.button:hover {
+.button-link-container:hover {
     transition: all ease 0.5s;
     background-color: white;
-    color: hotpink;
+    color: black;
 }
 
 .button-danger {

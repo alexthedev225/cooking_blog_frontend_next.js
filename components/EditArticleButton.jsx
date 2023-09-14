@@ -6,10 +6,9 @@ function EditArticleButton({ articleId, margin }) {
     <Link
       href={`/blog/${articleId}/update`}
       className={styles["button-link-container"]}
+      style={{ margin: margin }}
     >
-      <button className={styles["button"]} style={{ margin: margin }}>
         Modifier l&apos;article
-      </button>
     </Link>
   );
 }

@@ -11,7 +11,7 @@ body {
   box-sizing: border-box;
 }
 
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 1300px) {
   .layout-container {
     padding-left: 10vw;
     padding-right: 10vw;

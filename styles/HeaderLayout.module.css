@@ -242,13 +242,11 @@
 }
 
 @media screen and (max-width: 900px) {
+    .navbar-auth-and-social-container {
+        width: 9rem;
+    }
     .navbar-logo-container p {
         font-size: 25px;
-    }
-}
-@media screen and (max-width: 500px) {
-    .navbar-links-container {
-        width: 35%;
     }
     .social-link-container {
         width: 100%;

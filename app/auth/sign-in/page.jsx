@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import { useCookies } from "react-cookie";
@@ -11,6 +11,8 @@ import Link from "next/link";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import NavigateToHomeButton from "@/components/NavigateToHomeButton";
+import { TailSpin } from "react-loader-spinner";
+import ButtonLoadingSpinner from "@/components/ButtonLoadingSpinner";
 
 const lora = Lora({
   weight: "700",
@@ -20,6 +22,7 @@ const lora = Lora({
 const SignInForm = () => {
   const router = useRouter();
   const pathname = usePathname();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   console.log(pathname); // Affiche le chemin de l'itinéraire actuel dans la console
 
@@ -27,6 +30,8 @@ const SignInForm = () => {
 
   const handleSignIn = async (values, actions) => {
     try {
+      setIsSubmitting(true); // Définit l'état de soumission à true lors de la requête
+
       const response = await axios.post(
         "https://cooking-blog-backend-express-js.onrender.com/api/users/login",
         {
@@ -46,6 +51,8 @@ const SignInForm = () => {
       }
     } catch (error) {
       actions.setFieldError("general", error.response.data.message);
+    } finally {
+      setIsSubmitting(false); // Réinitialise l'état de soumission à false après la requête
     }
   };
 
@@ -60,11 +67,9 @@ const SignInForm = () => {
     <div className={styles["box-container-primary"]}>
       <div className={styles["box-container-secondary"]}>
         <div className={styles["image-container"]}>
-          <Image
+          <img
             src={"/signin-image.jpg"}
             alt="signin-image"
-            height={350}
-            width={350}
           />
           <br />
           <Link href={"/auth/sign-up"}>Créer un compte</Link>
@@ -116,7 +121,10 @@ const SignInForm = () => {
                   />
                 </div>
               </div>
-              <button type="submit">Connexion</button>
+              <button type="submit" disabled={isSubmitting}>
+                {isSubmitting ? <ButtonLoadingSpinner /> : "Connexion"}
+              </button>
+
               <ErrorMessage name="general" component="div" />
             </Form>
           </Formik>

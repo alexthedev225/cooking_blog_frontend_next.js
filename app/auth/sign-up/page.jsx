@@ -1,5 +1,5 @@
-"use client"
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useFormik } from "formik";
@@ -9,6 +9,8 @@ import { Lora } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 import NavigateToHomeButton from "@/components/NavigateToHomeButton";
+import { TailSpin } from "react-loader-spinner";
+import ButtonLoadingSpinner from "@/components/ButtonLoadingSpinner";
 
 const lora = Lora({
   weight: "700",
@@ -17,6 +19,7 @@ const lora = Lora({
 
 const SignUpForm = () => {
   const router = useRouter();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -43,6 +46,7 @@ const SignUpForm = () => {
     }),
     onSubmit: async (values) => {
       try {
+        setIsSubmitting(true)
         const formData = new FormData();
         formData.append("username", values.username);
         formData.append("email", values.email);
@@ -66,6 +70,8 @@ const SignUpForm = () => {
         }
       } catch (error) {
         formik.setFieldError("general", error.response.data.message);
+      } finally {
+        setIsSubmitting(false)
       }
     },
   });
@@ -198,21 +204,22 @@ const SignUpForm = () => {
             </div>
 
             {formik.errors.general && <p>{formik.errors.general}</p>}
-
-            <button type="submit">Inscription</button>
+            <button type="submit" disabled={isSubmitting}>
+              {isSubmitting ? (
+                <ButtonLoadingSpinner />
+              ) : (
+                "Inscription"
+              )}
+            </button>
           </form>
         </div>
         <div className={styles["image-container"]}>
-          <Image
+          <img
             src={"/signup-image.jpg"}
             alt="signup-image"
-            height={294}
-            width={314}
           />
           <br />
-          <Link href={'/auth/sign-in'}>
-          Je suis déjà membre
-          </Link>
+          <Link href={"/auth/sign-in"}>Je suis déjà membre</Link>
         </div>
       </div>
       <NavigateToHomeButton />

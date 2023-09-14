@@ -2,12 +2,16 @@
 import styles from "@/styles/Button.module.css";
 import { useCookies } from "react-cookie";
 import { redirect } from "next/navigation"; // Importez le hook useRouter
+import { useState } from "react";
+import ButtonLoadingSpinner from "./ButtonLoadingSpinner";
 
-export default function DeleteArticleButton({ articleId }) {
+export default function DeleteArticleButton({ articleId, margin }) {
   const [cookies] = useCookies(["token", "userId"]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const token = cookies.token;
   async function deleteArticle() {
     try {
+      setIsSubmitting(true); // Définit l'état de soumission à true lors de la requête
       const response = await fetch(
         `https://cooking-blog-backend-express-js.onrender.com/api/articles/${articleId}`,
         {
@@ -28,6 +32,8 @@ export default function DeleteArticleButton({ articleId }) {
       }
     } catch (error) {
       console.error("Erreur lors de la suppression de l'article", error);
+    } finally {
+      isSubmitting(false);
     }
   }
 
@@ -44,8 +50,12 @@ export default function DeleteArticleButton({ articleId }) {
   };
 
   return (
-    <button className={styles["button-danger"]} onClick={handleDelete}>
-      Supprimer l&apos;article
+    <button
+      className={styles["button-danger"]}
+      onClick={handleDelete}
+      style={{ margin: margin }}
+    >
+      {isSubmitting ? <ButtonLoadingSpinner /> : "Supprimer l'article"}{" "}
     </button>
   );
 }
