@@ -16,12 +16,14 @@ export default function HeaderNavbar() {
   const pathname = usePathname();
 
   useEffect(() => {
+    const body = document.querySelector("body");
     if (isOpen) {
-      document.body.style.overflow = "hidden";
+      body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "";
+      body.style.overflow = "";
     }
   }, [isOpen]);
+
   
   return (
     <nav className={`${styles["header-navbar-container"]} `}>
