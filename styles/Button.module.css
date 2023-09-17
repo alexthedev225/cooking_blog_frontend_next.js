@@ -30,3 +30,8 @@
     background-color: white;
     color: #ff2929;
 }
+@media screen and (max-width: 350px) {
+    .button-link-container {
+        padding: 14px 2rem 14px 2rem;
+    }
+}

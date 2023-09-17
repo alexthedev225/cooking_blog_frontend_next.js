@@ -46,7 +46,7 @@ export default function HeaderNavbar() {
           href={"/auth/sign-in"}
           className={styles["auth-button-container"]}
         >
-          <img src={"/user.png"} height={32} width={32} alt="connexion" />
+          <img src={"/username.png"} height={32} width={32} alt="connexion" />
           <p>Connexion</p>
         </Link>
         <li>

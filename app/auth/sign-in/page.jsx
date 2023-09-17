@@ -3,23 +3,17 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import { useCookies } from "react-cookie";
-import styles from "@/styles/Form.module.css";
+import styles from "@/styles/AuthSignIn.module.css";
 import axios from "axios";
-import { Lora } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import NavigateToHomeButton from "@/components/NavigateToHomeButton";
-import { TailSpin } from "react-loader-spinner";
 import ButtonLoadingSpinner from "@/components/ButtonLoadingSpinner";
 
-const lora = Lora({
-  weight: "700",
-  subsets: ["latin"],
-});
-
 const SignInForm = () => {
+  const signInText = "Connexion"; // Constante pour les chaînes de texte réutilisables
+
   const router = useRouter();
   const pathname = usePathname();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -44,7 +38,7 @@ const SignInForm = () => {
         // Connexion réussie, redirigez ici vers la page souhaitée
         console.log(response.data.token);
         console.log(response.data.userId);
-        // Enregistrer le token et l'ID de l'utilisateur dans les cookies
+        // Enregistrement du token et de l'ID de l'utilisateur dans les cookies
         setCookie("userId", response.data.userId, { path: "/" });
         setCookie("token", response.data.token, { path: "/" });
         router.push("/");
@@ -64,73 +58,74 @@ const SignInForm = () => {
   });
 
   return (
-    <div className={styles["box-container-primary"]}>
-      <div className={styles["box-container-secondary"]}>
-        <div className={styles["image-container"]}>
-          <img
-            src={"/signin-image.jpg"}
-            alt="signin-image"
-          />
-          <br />
-          <Link href={"/auth/sign-up"}>Créer un compte</Link>
-        </div>
-        <div className={styles["login-container"]}>
-          <Formik
-            initialValues={{ email: "", password: "" }}
-            validationSchema={validationSchema}
-            onSubmit={handleSignIn}
-          >
-            <Form>
-              <h1 className={lora.className}>Connexion</h1>
-              <div className={styles["login-input-container"]}>
-                <div className={styles["input-container"]}>
-                  <Image src="/email.png" alt="email" height={20} width={20} />
-                  <Field
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="Adresse E-mail"
-                  />
-                </div>
-                <div className={styles["error-container"]}>
-                  <ErrorMessage
-                    name="email"
-                    component="div"
-                    className={styles["error"]}
-                  />
-                </div>
-                <div className={styles["input-container"]}>
-                  <img
-                    src="/password1.png"
-                    alt="password1"
-                    height={20}
-                    width={20}
-                  />
-                  <Field
-                    type="password"
-                    id="password"
-                    name="password"
-                    placeholder="Mot de passe"
-                  />
-                </div>
-                <div className={styles["error-container"]}>
-                  <ErrorMessage
-                    name="password"
-                    component="div"
-                    className={styles["error"]}
-                  />
-                </div>
-              </div>
-              <button type="submit" disabled={isSubmitting}>
-                {isSubmitting ? <ButtonLoadingSpinner /> : "Connexion"}
-              </button>
-
-              <ErrorMessage name="general" component="div" />
-            </Form>
-          </Formik>
-        </div>
+    <div className={styles["sign-in-container"]}>
+      <div className={styles["image-container"]}>
+        <img src={"/signin-image.jpg"} alt="signin-image" />
+        <br />
+        <Link href={"/auth/sign-up"}>Créer un compte</Link>
       </div>
-      <NavigateToHomeButton />
+      <div className={styles["form-container"]}>
+        <Formik
+          initialValues={{ email: "", password: "" }}
+          validationSchema={validationSchema}
+          onSubmit={handleSignIn}
+        >
+          <Form className={styles["sign-in-form"]}>
+            <h1 className={styles["custom-heading"]}>{signInText}</h1>
+            <div className={styles["input-container"]}>
+              <div className={styles["custom-input"]}>
+                <Image src="/email.png" alt="email" height={20} width={20} />
+                <Field
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Adresse E-mail"
+                  className={styles["custom-input-field"]}
+                />
+              </div>
+              <div className={styles["error-container"]}>
+                <ErrorMessage
+                  name="email"
+                  component="div"
+                  className={styles["error-message"]}
+                />
+              </div>
+              <div className={styles["custom-input"]}>
+                <img
+                  src="/password.png"
+                  alt="password"
+                  height={20}
+                  width={20}
+                />
+                <Field
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="Mot de passe"
+                  className={styles["custom-input-field"]}
+                />
+              </div>
+              <div className={styles["error-container"]}>
+                <ErrorMessage
+                  name="password"
+                  component="div"
+                  className={styles["error-message"]}
+                />
+              </div>
+            </div>
+            <button type="submit" disabled={isSubmitting}>
+              {isSubmitting ? <ButtonLoadingSpinner /> : signInText}
+            </button>
+
+            <ErrorMessage
+              name="general"
+              component="div"
+              className={styles["error-message"]}
+            />
+          </Form>
+        </Formik>
+      </div>
+      
     </div>
   );
 };

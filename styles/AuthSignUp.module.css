@@ -1,0 +1,192 @@
+.sign-up-container {
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    padding: 5rem;
+    height: 75vh;
+    width: 23cm;
+    border-radius: 1rem;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.sign-up-container>* {
+    width: 50%;
+}
+
+.image-container {
+    position: relative;
+    left: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.image-container a {
+    color: black;
+}
+
+.form-container {
+    height: 100%;
+}
+
+.sign-up-form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.custom-input {
+    border-bottom: 1px solid gainsboro;
+}
+
+.custom-input input {
+    background-color: transparent;
+    border: none;
+    caret-color: auto;
+}
+
+.custom-input img {
+    margin-right: 1rem;
+}
+
+.custom-input input:focus {
+    background-color: transparent;
+    outline: none;
+}
+
+.error-container {
+    display: flex;
+    align-items: center;
+    height: 1rem;
+    color: red;
+}
+
+.form-container button {
+    height: 3.5rem;
+    border: none;
+    background-color: #ff69b4;
+    color: white;
+    width: 7.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.form-container button:hover {
+    transition: all ease 0.3s;
+    background-color: #ff69b4c4;
+}
+
+/* Form.module.css */
+/* Form.module.css */
+.custom-file-input {
+    /* Styles pour personnaliser l'apparence de l'input de type "file" */
+    width: 0;
+    /* Masquer l'input par défaut */
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.file-label-text {
+    /* Styles pour personnaliser le texte du label */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: max-content;
+    padding: 10px;
+    background-color: hotpink;
+    /* Couleur d'arrière-plan personnalisée */
+    color: #fff;
+    /* Couleur du texte personnalisée */
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.file-label-text img {
+    margin-right: 0.5rem;
+}
+
+/* Styles pour mettre en surbrillance le label au survol du curseur */
+.file-label-text:hover {
+    transition: all ease 0.3s;
+    background-color: #ff69b4c4;
+    /* Couleur d'arrière-plan au survol */
+}
+
+/* Styles pour mettre en surbrillance le label lorsqu'il est actif (clic) */
+.custom-file-input:focus+.file-label-text {
+    outline: 1px solid #007bff;
+    /* Bordure d'accentuation au clic */
+}
+
+.success-icon {
+    color: rgb(0, 160, 0);
+}
+
+.upload-success-container {
+    display: flex;
+    align-items: center;
+    height: 2rem;
+    width: 100%;
+}
+@media screen and (max-width: 1200px){
+    .sign-up-container {
+        width: 90vw;
+    }
+}
+@media screen and (max-width: 900px) {
+    .image-container img {
+       height: 17rem;
+    }
+}
+@media screen and (max-width: 800px) {
+    .sign-up-container {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column-reverse;
+        padding: 4rem 2rem 4rem 2rem;
+        height: 130vh;
+        border-radius: 1rem;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+    .image-container {
+        position: relative;
+        left: 0;
+        margin-bottom: 3rem;
+    }
+    .sign-up-container>* {
+        width: 100%;
+        
+    }
+    .sign-up-form {
+        align-items: center;
+        width: 100%;
+    }
+    .input-container {
+        width: 100%;
+    }
+    /* .image-container img {
+        height: 15rem;
+    } */
+}
+@media screen and (max-width: 500px){
+    .image-container img {
+        /* height: 18rem; */
+    }
+}
+@media screen and (max-width: 400px){
+    .sign-up-container {
+        padding: 3rem 2rem 3rem 2rem;
+    }
+    
+    .sign-up-form {
+        height: 90%;
+    }
+    .image-container img {
+        height: 15rem;
+    }
+}
