@@ -180,13 +180,14 @@
 }
 @media screen and (max-width: 400px){
     .sign-up-container {
-        padding: 3rem 2rem 3rem 2rem;
+        height: 100vh;
+        padding: 2rem 2rem 0.5rem 2rem;
     }
     
     .sign-up-form {
         height: 90%;
     }
     .image-container img {
-        height: 15rem;
+        height: 10rem;
     }
 }
