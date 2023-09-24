@@ -42,6 +42,7 @@
 .article-image {
     height: 450px;
     width: 100%;
+    object-fit: cover;
     margin: 1rem 0 1rem 0;
 }
 
