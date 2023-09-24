@@ -25,7 +25,16 @@ export default function HeaderNavbar() {
       document.body.style.overflow = "";
     };
   }, [isOpen]);
-  
+
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
+
+  // Gère la fermeture du menu lorsque vous cliquez sur un lien
+  const handleLinkClick = () => {
+    closeMenu();
+  };
+
   return (
     <nav className={`${styles["header-navbar-container"]} `}>
       <button
@@ -45,6 +54,7 @@ export default function HeaderNavbar() {
         <Link
           href={"/auth/sign-in"}
           className={styles["auth-button-container"]}
+          onClick={handleLinkClick}
         >
           <img src={"/username.png"} height={32} width={32} alt="connexion" />
           <p>Connexion</p>
@@ -53,6 +63,7 @@ export default function HeaderNavbar() {
           <Link
             href={"/"}
             className={`${pathname === "/" ? styles.activeLink : ""}`}
+            onClick={handleLinkClick}
           >
             accueil
           </Link>
@@ -61,6 +72,7 @@ export default function HeaderNavbar() {
           <Link
             href={"/blog"}
             className={`${pathname === "/blog" ? styles.activeLink : ""}`}
+            onClick={handleLinkClick}
           >
             blog
           </Link>
@@ -69,6 +81,7 @@ export default function HeaderNavbar() {
           <Link
             href={"/about"}
             className={`${pathname === "/a-propos" ? styles.activeLink : ""}`}
+            onClick={handleLinkClick}
           >
             à propos
           </Link>
@@ -94,8 +107,9 @@ export default function HeaderNavbar() {
         <Link
           href={"/auth/sign-in"}
           className={styles["auth-button-container"]}
+          onClick={handleLinkClick}
         >
-          <img src={"/user.png"} height={32} width={32} alt="connexion" />
+          <img src={"/username.png"} height={32} width={32} alt="connexion" />
           <p>Connexion</p>
         </Link>
         <div className={styles["social-link-container"]}>
