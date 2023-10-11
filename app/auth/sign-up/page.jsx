@@ -138,7 +138,7 @@ const SignUpForm = () => {
             </div>
 
             <div className={styles["custom-input"]}>
-              <img
+              <Image
                 src={`/confirmPassword.gif`}
                 alt="confirmPassword"
                 height={20}
@@ -162,7 +162,7 @@ const SignUpForm = () => {
             <div className={styles["file-input-container"]}>
               <label htmlFor="imageProfil" className={styles["file-label"]}>
                 <span className={styles["file-label-text"]}>
-                  <img
+                  <Image
                     src="/telecharger.png"
                     alt="telechargement d'icone"
                     height={24}

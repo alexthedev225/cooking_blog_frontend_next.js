@@ -7,7 +7,6 @@ export default function NavigateToHomeButton() {
     <Link href={"/"} className={styles["button-link-container"]}  style={{
       margin: 0,
     }}>
-     
         Retour a la page d&apos;accueil
     </Link>
   );

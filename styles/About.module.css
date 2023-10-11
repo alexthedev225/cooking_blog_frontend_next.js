@@ -1,0 +1,180 @@
+.line {
+    display: flex;
+    height: 6px;
+    width: 1.9rem;
+    background-color: black;
+}
+
+.heading {
+    margin-bottom: 3rem;
+}
+
+.title {
+    margin-bottom: 1rem;
+}
+
+.title,
+.name {
+    letter-spacing: 1px;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin: 4.5rem 0 4.5rem 0;
+}
+
+.section {
+    width: 45%;
+}
+
+.profile-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.name,
+.description {
+    opacity: 70%;
+}
+
+.name {
+    margin-bottom: 0.5rem;
+}
+
+.description {
+    width: 13rem;
+}
+
+.contact {
+    display: flex;
+    justify-content: space-between;
+}
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 7rem;
+    width: max-content;
+    font-size: 14px;
+  
+}
+.email, .phone {
+    opacity: 70%;
+}
+.socialLinks {
+    display: flex;
+    justify-content: space-between;
+}
+.form {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.form > * {
+    padding: 1rem;
+    font-size: 15px;
+    border-radius: 0;
+    border: 1px solid black;
+}
+.form > *::placeholder {
+    opacity: 50%;
+}
+.form > *:not(:last-child):hover {
+    outline: 2px solid black;
+}
+.form > *:not(:last-child) {
+    margin-bottom: 0.5rem;
+}
+.form > *:not(:last-child):focus {
+    outline: 2px solid black;
+}
+
+.input {
+    height: 1.8rem;
+}
+.textarea {
+    height: 8rem;
+    width: 17rem;
+    resize: none;
+}
+.button {
+    padding: 10px 0 10px 0;
+    cursor: pointer;
+    border: 5px solid black;
+    background-color: black;
+    color: white;
+}
+.button:hover {
+    transition: all ease 0.3s;
+    background-color: white;
+    color: black;
+}
+@media screen and (max-width: 1100px) {
+    .section {
+        width: 48%;
+    }
+    .textarea {
+        width: 15rem;
+    }
+}
+@media screen and (max-width: 1000px) {
+    .container {
+        flex-direction: column;
+    }
+    .section {
+        width: 100%;
+    }
+    .section:first-of-type {
+        margin-bottom: 4rem;
+    }
+    .textarea  {
+        width: 17rem;
+    }
+    .description:last-of-type {
+        width: 17rem;
+    }
+}
+@media screen and (max-width: 600px) {
+    .profile-container, .contact {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .image {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .image img {
+        height: 20rem;
+        object-fit: cover;
+        object-position: top;
+        width: 100%;
+    }
+    .profile-info {
+        /* display: flex; */
+        /* flex-direction: column-reverse; */
+    }
+    .form {
+        margin-top: 3rem;
+    }
+    .form >* {
+        width: 100%;
+    }
+    .name,
+    .description {
+        font-size: 14px;
+        margin-bottom: 1rem;
+    }
+    .description:last-of-type {
+        width: 100%;
+        margin-top: 1rem;
+    }
+}
+@media screen and (max-width: 500px){
+    .image img {
+        height: auto;
+        object-fit: contain;
+    }
+}

@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useCookies } from "react-cookie";
+import styles from "@/styles/UpdateArticle.module.css";
 
 export default function Page({ params }) {
   const [cookies] = useCookies(["token", "userId"]);
@@ -89,39 +90,51 @@ export default function Page({ params }) {
   };
 
   return (
-    <div>
-      <h1>Modifier l&apos;article</h1>
-      <form onSubmit={handleUpdate}>
-        <div>
-          <label htmlFor="title">Titre :</label>
+    <div className={styles.container}>
+      <h1 className={styles.title}>Modifier l&apos;article</h1>
+      <form onSubmit={handleUpdate} className={styles.form}>
+        <div className={styles.formField}>
+          <label htmlFor="title" className={styles.label}>
+            Titre
+          </label>
           <input
             type="text"
             id="title"
             name="title"
             value={article.title}
             onChange={handleInputChange}
+            className={styles.input}
           />
         </div>
-        <div>
-          <label htmlFor="content">Contenu :</label>
+        <div className={styles.formField}>
+          <label htmlFor="content" className={styles.label}>
+            Contenu
+          </label>
           <textarea
             id="content"
             name="content"
             value={article.content}
             onChange={handleInputChange}
+            className={styles.textarea}
           />
         </div>
-        <div>
-          <label htmlFor="image">Image :</label>
-          <input
-            type="file"
-            accept="image/*" // N'acceptez que les fichiers image
-            id="image"
-            name="image"
-            onChange={handleImageChange}
-          />
+        <div className={styles.formField}>
+        <label htmlFor="content" className={styles.label}>
+            Image
+          </label>
+            <input
+              type="file"
+              accept="image/*" // N'acceptez que les fichiers image
+              id="image"
+              name="image"
+              onChange={handleImageChange}
+              className={styles.fileInput}
+            />
         </div>
-        <button type="submit">Mettre à jour</button>
+
+        <button type="submit" className={styles.button}>
+          Mettre à jour
+        </button>
       </form>
     </div>
   );

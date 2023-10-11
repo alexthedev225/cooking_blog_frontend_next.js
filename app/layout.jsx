@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 import { Suspense } from "react";
 import LoadingSpinner from "@/components/LayoutLoadingSpinner";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["greek"] });
 
 export const metadata = {
   title: "Délices et Saveurs : Créez, Dégustez, Partagez",
@@ -15,12 +15,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Suspense fallback={<LoadingSpinner height={'100vh'}/>}>
           <div className="layout-container">
             <Header />
             {children}
           </div>
-        </Suspense>
       </body>
     </html>
   );

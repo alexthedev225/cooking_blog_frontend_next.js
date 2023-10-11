@@ -1,0 +1,131 @@
+/* Styles pour le composant de mise à jour d'article */
+.container {
+    background-color: #fff;
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .formField {
+    margin-bottom: 20px;
+  }
+  
+  .label {
+    font-size: 18px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .input,
+  .textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    resize: none;
+  }
+/* Style pour l'input de type fichier */
+.fileInput {
+    display: inline-block;
+    width: max-content;
+    padding: 10px 20px;
+    background-color: #fff;
+    color: hotpink;
+    border: 2px solid hotpink;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.fileInput:hover {
+    background-color: hotpink;
+    color: #fff;
+    border-color: hotpink;
+}
+
+  
+  .textarea {
+    resize: none;
+  }
+  
+  .button {
+    background-color: hotpink;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+  }
+  
+  .button:hover {
+    background-color: rgba(255, 105, 180, 0.735);
+  }
+  
+  /* Styles spécifiques pour les tailles d'écran mobiles */
+  @media screen and (max-width: 576px) {
+    .label {
+      font-size: 16px;
+    }
+    .fileInput {
+        font-size: 14px;
+      }
+    .input,
+    .textarea {
+      font-size: 12px;
+    }
+  
+    .button {
+      font-size: 14px;
+    }
+  }
+  
+  /* Styles spécifiques pour les tailles d'écran tablettes */
+  @media screen and (min-width: 577px) and (max-width: 991px) {
+    .label {
+      font-size: 16px;
+    }
+    .fileInput {
+        font-size: 16px;
+      }
+    .input,
+    .textarea {
+      font-size: 14px;
+    }
+  
+    .button {
+      font-size: 16px;
+    }
+  }
+  
+  /* Styles spécifiques pour les tailles d'écran de bureau */
+  @media screen and (min-width: 992px) {
+    .label {
+      font-size: 18px;
+    }
+  
+    .input,
+    .textarea {
+      font-size: 16px;
+    }
+  
+    .button {
+      font-size: 18px;
+    }
+    .fileInput {
+        font-size: 18px;
+      }
+  }
+  @media screen and (max-width: 300px) {
+    .fileInput {
+      width: 100%;
+    }
+  }
+  

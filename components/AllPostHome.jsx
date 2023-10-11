@@ -43,6 +43,7 @@ async function getCommentsForArticle(articleId) {
 }
 
 export default async function GetAllPostHome() {
+  
   const blogPostHome = await getBlogPost();
   const commentsByArticle = {};
 

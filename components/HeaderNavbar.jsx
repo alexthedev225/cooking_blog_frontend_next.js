@@ -1,15 +1,11 @@
 "use client";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import styles from "@/styles/HeaderLayout.module.css";
-import { useRouter, usePathname } from "next/navigation";
-import { Lora } from "next/font/google";
+import { usePathname } from "next/navigation";
 import HeaderLogo from "./HeaderLogo";
 
-const lora = Lora({
-  weight: "700",
-  subsets: ["latin"],
-});
 
 export default function HeaderNavbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -56,7 +52,7 @@ export default function HeaderNavbar() {
           className={styles["auth-button-container"]}
           onClick={handleLinkClick}
         >
-          <img src={"/username.png"} height={32} width={32} alt="connexion" />
+          <Image src={"/username.png"} height={32} width={32} alt="connexion" />
           <p>Connexion</p>
         </Link>
         <li>
@@ -88,16 +84,16 @@ export default function HeaderNavbar() {
         </li>
         <div className={styles["social-link-container"]}>
           <a href="#">
-            <img src="/facebook.png" alt="facebook" />
+            <Image src="/facebook.png" alt="facebook" width={24} height={24} />
           </a>
           <a href="#">
-            <img src="/pinterest.png" alt="pinterest" />
+            <Image src="/pinterest.png" alt="pinterest" width={24} height={24} />
           </a>
           <a href="#">
-            <img src="/twitter.png" alt="twitter" />
+            <Image src="/twitter.png" alt="twitter" width={24} height={24} />
           </a>
           <a href="#">
-            <img src="/instagram.png" alt="instagram" />
+            <Image src="/instagram.png" alt="instagram" width={24} height={24} />
           </a>
         </div>
       </ul>
@@ -109,21 +105,21 @@ export default function HeaderNavbar() {
           className={styles["auth-button-container"]}
           onClick={handleLinkClick}
         >
-          <img src={"/username.png"} height={32} width={32} alt="connexion" />
+          <Image src={"/username.png"} height={32} width={32} alt="connexion" />
           <p>Connexion</p>
         </Link>
         <div className={styles["social-link-container"]}>
           <a href="#">
-            <img src="/facebook.png" alt="facebook" />
+            <Image src="/facebook.png" alt="facebook" height={24} width={24} />
           </a>
           <a href="#">
-            <img src="/pinterest.png" alt="pinterest" />
+            <Image src="/pinterest.png" alt="pinterest" height={24} width={24} />
           </a>
           <a href="#">
-            <img src="/twitter.png" alt="twitter" />
+            <Image src="/twitter.png" alt="twitter" height={24} width={24} />
           </a>
           <a href="#">
-            <img src="/instagram.png" alt="instagram" />
+            <Image src="/instagram.png" alt="instagram" height={24} width={24} />
           </a>
         </div>
       </div>

@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import { useRouter } from "next/navigation";
+import styles from "@/styles/CreateArticle.module.css"; // Importez le module CSS
 
 export default function CreateArticle() {
   const [title, setTitle] = useState("");
@@ -11,10 +12,10 @@ export default function CreateArticle() {
   const [image, setImage] = useState(null);
 
   const router = useRouter();
-  const [cookies] = useCookies(["token", "userId"]); // Utilisation des cookies
+  const [cookies] = useCookies(["token", "userId"]);
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const formData = new FormData();
     formData.append("title", title);
     formData.append("subTitle", subTitle);
@@ -28,47 +29,54 @@ export default function CreateArticle() {
         {
           headers: {
             "Content-Type": "multipart/form-data",
-            Authorization: `Bearer ${cookies.token}`, // Ajout du jeton d'authentification
+            Authorization: `Bearer ${cookies.token}`,
           },
         }
       );
       router.push("/blog");
       console.log("Article created:", response.data);
-      // Vous pouvez naviguer vers une page de succès ou mettre à jour l'interface utilisateur si nécessaire
     } catch (error) {
       console.error("Error creating article:", error);
-      // Gérez l'erreur et mettez à jour l'interface utilisateur en conséquence
     }
   };
 
   return (
     <div>
-      <h1>Create New Article</h1>
+      <h1 className={styles["create-article-title"]}>Créer un nouvel article</h1>
       <form onSubmit={handleSubmit}>
-        <label>Titre</label>
+        <label className={styles["form-label"]}>Titre</label>
         <input
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          className={styles["form-input"]}
         />
         <br />
-        <label>Sous Titre</label>
+        <label className={styles["form-label"]}>Sous Titre</label>
         <input
           type="text"
           value={subTitle}
           onChange={(e) => setSubTitle(e.target.value)}
+          className={styles["form-input"]}
         />
         <br />
-        <label>Contenue</label>
+        <label className={styles["form-label"]}>Contenue</label>
         <textarea
           value={content}
           onChange={(e) => setContent(e.target.value)}
+          className={styles["form-textarea"]}
         />
         <br />
-        <label>Image</label>
-        <input type="file" onChange={(e) => setImage(e.target.files[0])} />
+        <label className={styles["form-label"]}>Image</label>
+        <input
+          type="file"
+          onChange={(e) => setImage(e.target.files[0])}
+          className={`${styles["form-input"]} ${styles.fileInput}`}
+        />
         <br />
-        <button type="submit">Create Article</button>
+        <button type="submit" className={styles["form-button"]}>
+          Create Article
+        </button>
       </form>
     </div>
   );

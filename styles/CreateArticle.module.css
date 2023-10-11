@@ -1,0 +1,163 @@
+/* CreateArticle.module.css */
+
+/* Styles de base pour tous les écrans */
+.create-article-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .form-label {
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-input,
+  .form-textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    resize: none;
+  }
+  
+  .form-button {
+    background-color: hotpink;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+  }
+  
+  .form-button:hover {
+    background-color: rgba(255, 105, 180, 0.735);
+  }
+  
+  /* Style pour le container principal */
+  .create-article-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+  }
+  
+  .fileInput {
+    display: inline-block;
+    width: max-content;
+    padding: 10px 20px;
+    background-color: #fff;
+    color: hotpink;
+    border: 2px solid hotpink;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.fileInput:hover {
+    background-color: hotpink;
+    color: #fff;
+    border-color: hotpink;
+}
+  
+  /* Style pour la prévisualisation de l'image */
+  .image-preview {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+    display: none;
+  }
+  
+  /* Style pour le message d'erreur */
+  .error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  /* Styles spécifiques pour les tailles d'écran mobiles */
+  @media screen and (max-width: 576px) {
+    .create-article-title {
+      font-size: 20px;
+    }
+  
+    .form-label {
+      font-size: 14px;
+    }
+  
+    .form-input,
+    .form-textarea {
+      font-size: 12px;
+    }
+  
+    .form-button {
+      font-size: 14px;
+    }
+  
+    .file-upload-label {
+      font-size: 14px;
+    }
+  }
+  
+  /* Styles spécifiques pour les tailles d'écran tablettes */
+  @media screen and (min-width: 577px) and (max-width: 991px) {
+    .create-article-title {
+      font-size: 22px;
+    }
+  
+    .form-label {
+      font-size: 16px;
+    }
+  
+    .form-input,
+    .form-textarea {
+      font-size: 14px;
+    }
+  
+    .form-button {
+      font-size: 16px;
+    }
+  
+    .file-upload-label {
+      font-size: 16px;
+    }
+  }
+  
+  /* Styles spécifiques pour les tailles d'écran de bureau */
+  @media screen and (min-width: 992px) {
+    .create-article-title {
+      font-size: 24px;
+    }
+  
+    .form-label {
+      font-size: 18px;
+    }
+  
+    .form-input,
+    .form-textarea {
+      font-size: 16px;
+    }
+  
+    .form-button {
+      font-size: 18px;
+    }
+  
+    .file-upload-label {
+      font-size: 18px;
+    }
+  }
+  @media screen and (max-width: 300px) {
+    .fileInput {
+      width: 100%;
+    }
+  }

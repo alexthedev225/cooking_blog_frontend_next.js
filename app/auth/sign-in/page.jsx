@@ -20,7 +20,7 @@ const SignInForm = () => {
 
   console.log(pathname); // Affiche le chemin de l'itinéraire actuel dans la console
 
-  const [cookies, setCookie] = useCookies(["token", "userId"]);
+  const [, setCookie] = useCookies(["token", "userId"]);
 
   const handleSignIn = async (values, actions) => {
     try {
@@ -91,7 +91,7 @@ const SignInForm = () => {
                 />
               </div>
               <div className={styles["custom-input"]}>
-                <img
+                <Image
                   src="/password.png"
                   alt="password"
                   height={20}

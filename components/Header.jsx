@@ -8,7 +8,7 @@ import HeaderLogo from "./HeaderLogo";
 
 export default function Header() {
   const pathname = usePathname();
-  if (pathname === '/auth/sign-in' || pathname === '/auth/sign-up') {
+  if (pathname === '/auth/sign-in' || pathname === '/auth/sign-up' ) {
     return null;
   }
   return (

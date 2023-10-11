@@ -53,12 +53,14 @@
         font-size: 15px;
     }
 }
+@media screen and (max-width: 350px) {
+    .header-container .navbar-logo-container p {
+        font-size: 10px;
+    }
+}
 @media screen and (max-width: 300px) {
     .header-container .navbar-logo-container {
         top: 2rem;
         height: 8vh;
-    }
-    .header-container .navbar-logo-container p {
-        font-size: 10px;
     }
 }

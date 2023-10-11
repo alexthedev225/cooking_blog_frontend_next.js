@@ -7,50 +7,137 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    text-decoration: none;
+    color: black;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* Deux colonnes par ligne */
+    gap: 30px;
 }
-
+.articles-container * img {
+    object-fit: cover;
+}
 .articles-items-container {
     height: max-content;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin-top: 5rem;
     width: 100%;
 }
 
-.articles-items-container>li {
+.article-item {
     background-color: white;
-    border: 2px solid rgba(240, 46, 170, 0.4);
-    margin-bottom: 5rem;
-    padding: 1rem;
-    height: max-content;
-    width: 96%;
+    border: 1px solid gainsboro;
+    margin-bottom: 2rem;
+    height: 85vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
 }
 
-.articles-items-container>li>img {
-    width: 100%;
+.article-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: max-content;
+}
+
+.author-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: max-content;
+    margin-bottom: 1rem;
+}
+
+.author-profile-image {
+    height: 50px;
+    width: 50px;
+    margin-right: 1rem;
+    border-radius: 100%;
     object-fit: cover;
+    object-position: center;
+    border: 2px solid gainsboro;
 }
 
-/* Article.module.css */
-.blur-image {
-    filter: blur(8px);
-    transition: filter 0.3s ease-in-out;
+.article-container {
+    height: 100%;
+    background-color: white;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 40px 20px 40px;
 }
 
-.author-container {
-    height: 25vh;
+.article-details {
+    height: max-content;
+    width: 100%;
+}
+
+.article-title {
+    margin-bottom: 1rem;
+    font-weight: 300;
+    font-size: 28px;
+}
+
+.comment-info {
+    border-top: 1px solid gainsboro;
+    padding-top: 1rem;
+}
+
+.comment-section {
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    flex-direction: column;
+    font-size: 14px;
 }
 
-.author-container h3 {
-    align-self: flex-start;
+.comment-count {
+    margin-right: 0.4rem;
+}
+
+.comment-icon {
+    display: none;
+    margin-right: 1rem;
+}
+
+.article-subtitle,
+.comment-section,
+.author-details {
+    color: rgba(0, 0, 0, 0.685);
+}
+@media screen and (max-width: 900px) {
+    .articles-container {
+        gap: 20px;
+    }
+}
+@media screen and (max-width: 800px) {
+    .articles-container {
+        gap: 20px;
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .article-item {
+        height: max-content;
+        flex-direction: column;
+    }
+
+    .article-item>* {
+        width: 100%;
+    }
+
+    .article-subtitle {
+        margin-bottom: 3rem;
+    }
+}
+
+@media screen and (max-width: 400px) {
+   
+    .article-item {
+        border: none;
+    }
+
 }
