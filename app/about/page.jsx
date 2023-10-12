@@ -51,13 +51,12 @@ export default function Page() {
         <Header title={"À PROPOS"} />
         <div className={styles["profile-container"]}>
           <div className={styles.image}>
-            <Image
-              src={"/MyPicture.jpg"}
+            <img
+              src={"/MyPicture.JPG"}
               height={120}
               width={180}
               style={{
                 marginBottom: "1rem",
-                // objectFit: "cover",
               }}
               alt="Alex Konan Dev FullStack"
             />
