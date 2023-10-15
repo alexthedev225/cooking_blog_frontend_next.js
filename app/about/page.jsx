@@ -71,9 +71,9 @@ export default function Page() {
             </div>
           </div>
           <div className={styles.description}>
-            En tant que développeur Full Stack MERN passionné avec plus d'1 an
-            d'expérience, je maîtrise JavaScript, React, Node, Express, MongoDB,
-            MySQL, PHP, Git, GitHub, et React Native. J'excelle dans la création
+            En tant que développeur Full Stack MERN passionné avec plus d&apos;1 an
+            d&apos;expérience, je maîtrise JavaScript, React, Node, Express, MongoDB,
+            MySQL, PHP, Git, GitHub, et React Native. J&apos;excelle dans la création
             de solutions complètes avec des normes élevées pour des clients
             satisfaits.
           </div>
