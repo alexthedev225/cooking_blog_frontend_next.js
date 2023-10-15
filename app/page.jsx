@@ -2,6 +2,7 @@ import GetAllPostHome from "@/components/AllPostHome";
 import NavigateToAllPostsButton from "@/components/NavigateToAllPostsButton";
 
 export default function Home() {
+
   return (
     <div
       style={{

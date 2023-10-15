@@ -6,9 +6,6 @@ import styles from "@/styles/ArticleById.module.css";
 async function getArticleById(id) {
   const response = await fetch(
     `https://cooking-blog-backend-express-js.onrender.com/api/articles/${id}`,
-    {
-      cache: "no-store",
-    }
   );
   const article = await response.json();
   return article;

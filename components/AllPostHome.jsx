@@ -12,9 +12,6 @@ async function getBlogPost() {
   const limitToFive = true;
   const data = await fetch(
     `https://cooking-blog-backend-express-js.onrender.com/api/articles?limitToFive=${limitToFive}`,
-    {
-      cache: "no-store",
-    }
   );
   if (!data.ok) {
     throw new Error("Erreur lors de la récupération des articles");
@@ -26,9 +23,6 @@ async function getBlogPost() {
 async function getCommentByArticle(articleId) {
   const response = await fetch(
     `https://cooking-blog-backend-express-js.onrender.com/api/comments/${articleId}`,
-    {
-      cache: "no-store",
-    }
   );
   if (!response.ok) {
     throw new Error("Erreur lors de la récupération des commentaires");

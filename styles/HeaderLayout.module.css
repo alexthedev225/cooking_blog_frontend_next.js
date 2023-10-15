@@ -14,6 +14,9 @@
     padding: 0;
     list-style: none;
 }
+.logout-button-container {
+    display: none;
+}
 
 .navbar-links-container .auth-button-container {
     display: none;
@@ -70,10 +73,12 @@
 
 .auth-button-container {
     padding: 0;
-    margin-right: 1rem;
+    margin-right: 2rem;
     display: flex;
     color: black;
-    width: 50%;
+    border: none;
+    width: 55%;
+    cursor: pointer;
     text-decoration: none;
     justify-content: space-between;
     align-items: center;
@@ -88,7 +93,7 @@
     height: 24px;
     width: 20%;
     position: relative;
-    right: 1rem;
+    right: 0.5rem;
 }
 
 .social-link-container {
@@ -220,8 +225,25 @@
 
     .navbar-links-container.open .auth-button-container {
         display: flex;
-        width: 5rem;
+        position: relative;
+        left: 1rem;
+        justify-content: space-between;
+        width: 6rem;
         text-transform: capitalize;
+    }
+    .navbar-links-container.open .logout-button-container {
+        display: flex;
+        position: relative;
+        align-items: center;
+        background-color: transparent;
+        border: none;
+        justify-content: space-between;
+        width: 8rem;
+        text-transform: capitalize;
+    }
+    .navbar-links-container.open .logout-button-container img {
+        position: relative;
+        right: 0.5rem;
     }
     .navbar-links-container.open .social-link-container {
         display: flex;

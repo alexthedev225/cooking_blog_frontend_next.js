@@ -124,4 +124,12 @@
     .comment-icon {
         display: block;
     }
+    .article-container {
+        font-size: 14px;
+    }
+}
+@media screen and (max-width: 400px) {
+    .article-container {
+        padding: 25px;
+    }
 }

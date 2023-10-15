@@ -1,32 +1,77 @@
+"use client";
 import { useRouter } from "next/navigation";
-import Cookies from "js-cookie"; // Assurez-vous d'avoir installé ce package
+import Cookies from "js-cookie";
 import axios from "axios";
+import Image from "next/image";
+import { useState } from "react";
 
-const LogoutButton = () => {
-  const router = useRouter();
+const LogoutButton = ({ className }) => {
+  const [isLoggedOut, setIsLoggedOut] = useState(false);
 
   const handleLogout = () => {
-    const token = Cookies.get("token"); // Récupérez le token depuis les cookies
+    const token = Cookies.get("token");
 
     if (token) {
       axios
-        .post("http://localhost:8000/api/users/logout", null, {
+        .post("https://cooking-blog-backend-express-js.onrender.com/api/users/logout", null, {
           headers: {
-            Authorization: `Bearer ${token}`, // Ajoutez le token à l'en-tête
+            Authorization: `Bearer ${token}`,
           },
         })
-        .then((response) => {
-          // Gérez la réponse, par exemple supprimez le token stocké côté client
-          Cookies.remove("token"); // Supprimez le token des cookies
-          router.push("/"); // Redirigez l'utilisateur vers la page d'accueil ou une autre page
+        .then(() => {
+          Cookies.remove("token");
+          setIsLoggedOut(true);
+          setTimeout(() => {
+            window.location.reload();
+          }, 1500);
         })
-        .catch((error) => {
-          // Gérez les erreurs
-        });
+        .catch(() => {});
     }
   };
 
-  return <button onClick={handleLogout}>Déconnexion</button>;
+  return (
+    <>
+      <button onClick={handleLogout} className={className}>
+        <Image src="/logout.png" height={24} width={24} alt="Déconnexion" />
+        <p>Déconnexion</p>
+      </button>
+      <Modal
+        show={isLoggedOut}
+        onClose={() => setIsLoggedOut(false)}
+        message="Vous avez été déconnecté avec succès."
+      />
+    </>
+  );
 };
 
 export default LogoutButton;
+
+const modalStyle = {
+  position: "fixed",
+  top: "0",
+  left: "0",
+  width: "100%",
+  height: "100%",
+  backgroundColor: "rgba(0, 0, 0, 0.5)",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+};
+
+const modalContentStyle = {
+  backgroundColor: "white",
+  padding: "20px",
+  borderRadius: "5px",
+  boxShadow: "0 2px 10px rgba(0, 0, 0, 0.2)",
+  position: "relative",
+};
+
+const Modal = ({ show, onClose, message }) => {
+  return show ? (
+    <div style={modalStyle}>
+      <div style={modalContentStyle}>
+        <p>{message}</p>
+      </div>
+    </div>
+  ) : null;
+};

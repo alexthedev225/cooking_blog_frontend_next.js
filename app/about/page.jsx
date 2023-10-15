@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Image from "next/image";
 import styles from "@/styles/About.module.css";
 import { useState } from "react";
@@ -30,13 +30,16 @@ export default function Page() {
       message: message,
     };
 
-    fetch("https://cooking-blog-backend-express-js.onrender.com/envoyer-email", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
+    fetch(
+      "https://cooking-blog-backend-express-js.onrender.com/envoyer-email",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    )
       .then((response) => response.json())
       .then((data) => {
         console.log(data); // Gérez la réponse du serveur comme vous le souhaitez
@@ -51,7 +54,7 @@ export default function Page() {
         <Header title={"À PROPOS"} />
         <div className={styles["profile-container"]}>
           <div className={styles.image}>
-            <img
+            <Image
               src={"/MyPicture.JPG"}
               height={120}
               width={180}
@@ -68,10 +71,11 @@ export default function Page() {
             </div>
           </div>
           <div className={styles.description}>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi quod
-            officiis eius cum corporis, in porro blanditiis, tempora, quos
-            labore velit? Consectetur doloremque magnam aspernatur voluptatem.
-            Quis, quibusdam. Ad, a?
+            En tant que développeur Full Stack MERN passionné avec plus d'1 an
+            d'expérience, je maîtrise JavaScript, React, Node, Express, MongoDB,
+            MySQL, PHP, Git, GitHub, et React Native. J'excelle dans la création
+            de solutions complètes avec des normes élevées pour des clients
+            satisfaits.
           </div>
         </div>
       </div>

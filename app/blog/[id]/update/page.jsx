@@ -23,9 +23,6 @@ export default function Page({ params }) {
       try {
         const response = await fetch(
           `https://cooking-blog-backend-express-js.onrender.com/api/articles/${articleId}`,
-          {
-            cache: "no-store",
-          }
         );
 
         if (!response.ok) {

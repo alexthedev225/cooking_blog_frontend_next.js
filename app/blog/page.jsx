@@ -12,9 +12,6 @@ const ubuntu = Ubuntu({
 async function getBlogPost() {
   const data = await fetch(
     "https://cooking-blog-backend-express-js.onrender.com/api/articles",
-    {
-      cache: "no-store",
-    }
   );
   const blogPost = await data.json();
   return blogPost;
@@ -23,9 +20,6 @@ async function getBlogPost() {
 async function getCommentByArticle(articleId) {
   const response = await fetch(
     `https://cooking-blog-backend-express-js.onrender.com/api/comments/${articleId}`,
-    {
-      cache: "no-store",
-    }
   );
   if (!response.ok) {
     throw new Error("Erreur lors de la récupération des commentaires");

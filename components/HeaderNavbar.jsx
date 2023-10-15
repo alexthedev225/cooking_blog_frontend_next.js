@@ -5,13 +5,17 @@ import Image from "next/image";
 import styles from "@/styles/HeaderLayout.module.css";
 import { usePathname } from "next/navigation";
 import HeaderLogo from "./HeaderLogo";
-
+import Cookies from "js-cookie";
+import LogoutButton from "./LogoutButton";
 
 export default function HeaderNavbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [token, setToken] = useState(null);
   const pathname = usePathname();
 
   useEffect(() => {
+    setToken(Cookies.get("token")); // Mettez à jour token dans un effet
+
     if (isOpen) {
       document.body.style.overflow = "hidden";
     } else {
@@ -20,7 +24,7 @@ export default function HeaderNavbar() {
     return () => {
       document.body.style.overflow = "";
     };
-  }, [isOpen]);
+  }, [isOpen, token]);
 
   const closeMenu = () => {
     setIsOpen(false);
@@ -47,14 +51,18 @@ export default function HeaderNavbar() {
           isOpen ? styles.open : ""
         }`}
       >
-        <Link
-          href={"/auth/sign-in"}
-          className={styles["auth-button-container"]}
-          onClick={handleLinkClick}
-        >
-          <Image src={"/username.png"} height={32} width={32} alt="connexion" />
-          <p>Connexion</p>
-        </Link>
+         {token ? (
+         <LogoutButton className={styles["logout-button-container"]}/>
+        ) : (
+          <Link
+            href="/auth/sign-in"
+            className={styles["auth-button-container"]}
+            onClick={handleLinkClick}
+          >
+            <Image src="/username.png" height={32} width={32} alt="Connexion" />
+            <p>Connexion</p>
+          </Link>
+        )}
         <li>
           <Link
             href={"/"}
@@ -87,39 +95,64 @@ export default function HeaderNavbar() {
             <Image src="/facebook.png" alt="facebook" width={24} height={24} />
           </a>
           <a href="#">
-            <Image src="/pinterest.png" alt="pinterest" width={24} height={24} />
+            <Image
+              src="/pinterest.png"
+              alt="pinterest"
+              width={24}
+              height={24}
+            />
           </a>
           <a href="#">
             <Image src="/twitter.png" alt="twitter" width={24} height={24} />
           </a>
           <a href="#">
-            <Image src="/instagram.png" alt="instagram" width={24} height={24} />
+            <Image
+              src="/instagram.png"
+              alt="instagram"
+              width={24}
+              height={24}
+            />
           </a>
         </div>
       </ul>
 
       <HeaderLogo />
       <div className={styles["navbar-auth-and-social-container"]}>
-        <Link
-          href={"/auth/sign-in"}
-          className={styles["auth-button-container"]}
-          onClick={handleLinkClick}
-        >
-          <Image src={"/username.png"} height={32} width={32} alt="connexion" />
-          <p>Connexion</p>
-        </Link>
+        {token ? (
+         <LogoutButton className={styles["auth-button-container"]}/>
+        ) : (
+          <Link
+            href="/auth/sign-in"
+            className={styles["auth-button-container"]}
+            onClick={handleLinkClick}
+          >
+            <Image src="/username.png" height={32} width={32} alt="Connexion" />
+            <p>Connexion</p>
+          </Link>
+        )}
+
         <div className={styles["social-link-container"]}>
           <a href="#">
             <Image src="/facebook.png" alt="facebook" height={24} width={24} />
           </a>
           <a href="#">
-            <Image src="/pinterest.png" alt="pinterest" height={24} width={24} />
+            <Image
+              src="/pinterest.png"
+              alt="pinterest"
+              height={24}
+              width={24}
+            />
           </a>
           <a href="#">
             <Image src="/twitter.png" alt="twitter" height={24} width={24} />
           </a>
           <a href="#">
-            <Image src="/instagram.png" alt="instagram" height={24} width={24} />
+            <Image
+              src="/instagram.png"
+              alt="instagram"
+              height={24}
+              width={24}
+            />
           </a>
         </div>
       </div>
