@@ -73,7 +73,7 @@
 
 .auth-button-container {
     padding: 0;
-    margin-right: 2rem;
+    margin-right: 1rem;
     display: flex;
     color: black;
     border: none;
@@ -228,7 +228,7 @@
         position: relative;
         left: 1rem;
         justify-content: space-between;
-        width: 6rem;
+        width: 6.5rem;
         text-transform: capitalize;
     }
     .navbar-links-container.open .logout-button-container {

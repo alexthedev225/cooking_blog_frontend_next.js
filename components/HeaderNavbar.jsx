@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
 import styles from "@/styles/HeaderLayout.module.css";
 import { usePathname } from "next/navigation";
 import HeaderLogo from "./HeaderLogo";
@@ -59,7 +58,7 @@ export default function HeaderNavbar() {
             className={styles["auth-button-container"]}
             onClick={handleLinkClick}
           >
-            <Image src="/username.png" height={32} width={32} alt="Connexion" />
+            <img src="/user.png" height={32} width={32} alt="Connexion" />
             <p>Connexion</p>
           </Link>
         )}
@@ -92,10 +91,10 @@ export default function HeaderNavbar() {
         </li>
         <div className={styles["social-link-container"]}>
           <a href="#">
-            <Image src="/facebook.png" alt="facebook" width={24} height={24} />
+            <img src="/facebook.png" alt="facebook" width={24} height={24} />
           </a>
           <a href="#">
-            <Image
+            <img
               src="/pinterest.png"
               alt="pinterest"
               width={24}
@@ -103,10 +102,10 @@ export default function HeaderNavbar() {
             />
           </a>
           <a href="#">
-            <Image src="/twitter.png" alt="twitter" width={24} height={24} />
+            <img src="/twitter.png" alt="twitter" width={24} height={24} />
           </a>
           <a href="#">
-            <Image
+            <img
               src="/instagram.png"
               alt="instagram"
               width={24}
@@ -126,17 +125,17 @@ export default function HeaderNavbar() {
             className={styles["auth-button-container"]}
             onClick={handleLinkClick}
           >
-            <Image src="/username.png" height={32} width={32} alt="Connexion" />
+            <img src="/user.png" height={32} width={32} alt="Connexion" />
             <p>Connexion</p>
           </Link>
         )}
 
         <div className={styles["social-link-container"]}>
           <a href="#">
-            <Image src="/facebook.png" alt="facebook" height={24} width={24} />
+            <img src="/facebook.png" alt="facebook" height={24} width={24} />
           </a>
           <a href="#">
-            <Image
+            <img
               src="/pinterest.png"
               alt="pinterest"
               height={24}
@@ -144,10 +143,10 @@ export default function HeaderNavbar() {
             />
           </a>
           <a href="#">
-            <Image src="/twitter.png" alt="twitter" height={24} width={24} />
+            <img src="/twitter.png" alt="twitter" height={24} width={24} />
           </a>
           <a href="#">
-            <Image
+            <img
               src="/instagram.png"
               alt="instagram"
               height={24}
